@@ -29,10 +29,16 @@ namespace CheckIn.Infraestructure.EF.Repository
                 .SingleAsync(x => x.Id == id);
         }
 
+        public Task<List<Domain.Model.CheckIn>> GellAll()
+        {
+            return _checkIn.Include("_DetalleEquipaje").ToListAsync();
+        }
+
         public Task Updateasync(Domain.Model.CheckIn obj)
         {
             _checkIn.Update(obj);
             return Task.CompletedTask;
         }
+
     }
 }

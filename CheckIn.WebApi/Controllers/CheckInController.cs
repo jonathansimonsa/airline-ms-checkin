@@ -1,10 +1,12 @@
 ﻿using CheckIn.Application.Dto;
 using CheckIn.Application.UseCases.Command;
 using CheckIn.Application.UseCases.Queries;
+using CheckIn.Application.UseCases.Queries.GetAllCheckIn;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CheckIn.WebApi.Controllers
@@ -25,6 +27,16 @@ namespace CheckIn.WebApi.Controllers
         {
             Guid id = await _mediator.Send(command);
             return Ok(id);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromRoute] GetAllCheckInQuery command)
+        {
+            List<CheckInDto> result = await _mediator.Send(command);
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
         }
 
         [Route("{id:guid}")]

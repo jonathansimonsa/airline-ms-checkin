@@ -9,6 +9,8 @@ namespace CheckIn.Domain.Repositories
 {
     public interface ICheckInRepository : IRepository<Model.CheckIn, Guid>
     {
+        Task<List<Model.CheckIn>> GellAll();
+
         Task Updateasync(Model.CheckIn obj);
 
     }
