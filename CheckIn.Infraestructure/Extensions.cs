@@ -33,6 +33,9 @@ namespace CheckIn.Infraestructure
             context.UseSqlServer(connectionString));
 
             services.AddScoped<ICheckInRepository, CheckInRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<IAsientoRepository, AsientoRepository>();
+            services.AddScoped<IAdministrativoRepository, AdministrativoRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

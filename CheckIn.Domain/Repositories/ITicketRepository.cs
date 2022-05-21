@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Repositories
 {
-    public interface ICheckInRepository : IRepository<Model.CheckIn.CheckIn, Guid>
+    public interface ITicketRepository : IRepository<Model.Ticket.Ticket, Guid>
     {
-        Task<List<Model.CheckIn.CheckIn>> GellAll();
+        Task<List<Model.Ticket.Ticket>> GellAll();
 
-        Task Updateasync(Model.CheckIn.CheckIn obj);
-
+        Task Updateasync(Model.Ticket.Ticket obj);
     }
 }

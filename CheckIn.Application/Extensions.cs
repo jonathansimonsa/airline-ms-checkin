@@ -1,5 +1,8 @@
 ﻿using CheckIn.Application.Services;
-using CheckIn.Domain.Factories;
+using CheckIn.Domain.Factories.Adm;
+using CheckIn.Domain.Factories.Avion;
+using CheckIn.Domain.Factories.CheckIn;
+using CheckIn.Domain.Factories.Ticket;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,11 +21,13 @@ namespace CheckIn.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient<ICheckInService, CheckInService>();
             services.AddTransient<ICheckInFactory, CheckInFactory>();
-          
-            //services.addMediatR(Assembly.)
+            services.AddTransient<ITicketFactory, TicketFactory>();
+            services.AddTransient<IAsientoFactory, AsientoFactory>();
+            services.AddTransient<IAdministrativoFactory, AdministrativoFactory>();
+
             return services;
         }
-    
+
     }
 
 }

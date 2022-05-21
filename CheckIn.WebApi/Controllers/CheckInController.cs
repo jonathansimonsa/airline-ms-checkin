@@ -1,7 +1,5 @@
-﻿using CheckIn.Application.Dto;
-using CheckIn.Application.UseCases.Command;
-using CheckIn.Application.UseCases.Queries;
-using CheckIn.Application.UseCases.Queries.GetAllCheckIn;
+﻿using CheckIn.Application.Dto.CheckIn;
+using CheckIn.Application.UseCases.CheckIn;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
