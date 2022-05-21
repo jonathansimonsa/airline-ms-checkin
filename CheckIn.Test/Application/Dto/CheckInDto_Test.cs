@@ -14,7 +14,7 @@ namespace CheckIn.Test.Application.Dto
         public void CheckInDto_CheckPropertiesValid()
         {
             var idTest = Guid.NewGuid();
-            var nroCheckInTest = "ABC";
+            var nroCheckInTest = "QAZ";
             var horaTest = DateTime.Now;
             var prioridadTest = 0;
             var detalleTest = getDetalleCheckIn();

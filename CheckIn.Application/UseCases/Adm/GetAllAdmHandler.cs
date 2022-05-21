@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Adm
 {
-        public class GetAllAdmHandler : IRequestHandler<GetAllAdmQuery, List<AdministrativoDto>>
-        {
-            private readonly IAdministrativoRepository _administrativoRepository;
-            private readonly ILogger<GetAllAdmQuery> _logger;
+    public class GetAllAdmHandler : IRequestHandler<GetAllAdmQuery, List<AdministrativoDto>>
+    {
+        private readonly IAdministrativoRepository _administrativoRepository;
+        private readonly ILogger<GetAllAdmQuery> _logger;
 
         public GetAllAdmHandler(IAdministrativoRepository administrativoRepository, ILogger<GetAllAdmQuery> logger)
         {
