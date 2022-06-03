@@ -7,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CheckIn.Test.Application.UseCases.Command
+namespace CheckIn.Test.Application.UseCases
 {
     public class GetAllAdmHandler_Test
     {
@@ -20,12 +21,17 @@ namespace CheckIn.Test.Application.UseCases.Command
         public GetAllAdmHandler_Test()
         {
             admRepository = new Mock<IAdministrativoRepository>();
+            logger = new Mock<ILogger<GetAllAdmQuery>>();
         }
 
         [Fact]
         public void Handler_Correctly()
         {
-           // var handler = GetAllAdmHandler(admRepository.Object, logger.Object);
+            var tcs = new CancellationTokenSource(1000);
+            var handler = new GetAllAdmHandler(admRepository.Object, logger.Object);
+           var result= handler.Handle(new GetAllAdmQuery(),tcs.Token);
+
+            Assert.NotNull(result.Result);
         }
     }
 }

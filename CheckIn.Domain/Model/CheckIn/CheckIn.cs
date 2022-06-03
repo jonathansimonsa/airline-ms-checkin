@@ -29,7 +29,9 @@ namespace CheckIn.Domain.Model.CheckIn
         }
 
         public CheckIn()
-        { }
+        {
+            _DetalleEquipaje = new List<Equipaje>();
+        }
 
         public CheckIn(string nroCheckIn, int esAltaPrioridad, Guid ticketId, Guid asientoId, Guid administrativoId)
         {

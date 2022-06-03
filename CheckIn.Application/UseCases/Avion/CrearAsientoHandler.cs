@@ -35,7 +35,10 @@ namespace CheckIn.Application.UseCases.Avion
 
             try
             {
-                Domain.Model.Avion.Asiento objNuevo = _asientoFactory.Create(request.Fila, request.Letra, request.EsPrioridad);
+                Domain.Model.Avion.Asiento objNuevo = _asientoFactory.Create(
+                    request.Fila,
+                    request.Letra,
+                    request.EsPrioridad);
 
                 await _asientoRepository.CreateAsync(objNuevo);
                 await _unitOfWork.Commit();
@@ -44,7 +47,7 @@ namespace CheckIn.Application.UseCases.Avion
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al crear Ticket");
+                _logger.LogError(ex, "Error al crear Asiento");
             }
             return Guid.Empty;
         }

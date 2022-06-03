@@ -14,19 +14,19 @@ namespace CheckIn.Application.UseCases.Adm
 {
     public class CrearAdmHandler : IRequestHandler<CrearAdmCommand, Guid>
     {
-        private readonly IAdministrativoRepository _checkInRepository;
+        private readonly IAdministrativoRepository _admRepository;
         private readonly ILogger<CrearAdmHandler> _logger;
-        private readonly IAdministrativoFactory _checkInFactory;
+        private readonly IAdministrativoFactory _admFactory;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CrearAdmHandler(IAdministrativoRepository checkInRepository,
+        public CrearAdmHandler(IAdministrativoRepository admRepository,
             ILogger<CrearAdmHandler> logger,
-            IAdministrativoFactory checkInFactory,
+            IAdministrativoFactory admFactory,
             IUnitOfWork unitOfWork)
         {
-            _checkInRepository = checkInRepository;
+            _admRepository = admRepository;
             _logger = logger;
-            _checkInFactory = checkInFactory;
+            _admFactory = admFactory;
             _unitOfWork = unitOfWork;
         }
 
@@ -34,13 +34,13 @@ namespace CheckIn.Application.UseCases.Adm
         {
             try
             {
-                Domain.Model.Adm.Administrativo objNuevo = _checkInFactory.Create(
+                Domain.Model.Adm.Administrativo objNuevo = _admFactory.Create(
                     request.Ci,
                     request.Nombres,
                     request.Apellidos,
                     request.Cargo);
 
-                await _checkInRepository.CreateAsync(objNuevo);
+                await _admRepository.CreateAsync(objNuevo);
                 await _unitOfWork.Commit();
 
                 return objNuevo.Id;
