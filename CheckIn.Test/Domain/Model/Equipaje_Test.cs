@@ -20,6 +20,26 @@ namespace CheckIn.Test.Domain.Model
             Assert.Null(obj.Descripcion);
             Assert.Null(obj.Peso);
             Assert.Equal(0, obj.EsFragil);
+
+            var valor = new PesoValue(55);
+            decimal mydouble = valor;
+
+            Assert.NotEqual(0, mydouble);
+
+            var new_Peso = new PesoValue(0);
+            new_Peso = 11;
+
+            Assert.NotEqual(0, new_Peso);
+            try
+            {
+                new_Peso = new PesoValue(-11);
+            }
+            catch (Exception ex)
+            {
+                Assert.NotNull(ex);
+            }
+
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace CheckIn.Infraestructure.EF.Repository
 {
     public class AdministrativoRepository : IAdministrativoRepository
     {
-        public readonly DbSet<Domain.Model.Adm.Administrativo> _adm;
+        public readonly DbSet<Administrativo> _adm;
 
         public AdministrativoRepository(WriteDbContext context)
         {

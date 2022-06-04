@@ -21,7 +21,20 @@ namespace CheckIn.Test.Domain.Model
             Assert.Equal(Guid.Empty, obj.TicketId);
             Assert.Equal(Guid.Empty, obj.AsientoId);
             Assert.Equal(Guid.Empty, obj.AdministrativoId);
-            Assert.Equal(0,obj.DetalleEquipaje.Count);
+            Assert.Equal(0, obj.DetalleEquipaje.Count);
+
+            obj.ResetEquipajes();
+            Assert.Empty(obj.DetalleEquipaje);
+
+            var valor = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue("Codigo");
+            string mytext = valor;
+
+            Assert.NotNull(mytext);
+
+            var new_Numero = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue(".");
+            new_Numero = "Nro";
+
+            Assert.NotEqual(".", new_Numero.Value);
         }
     }
 }
