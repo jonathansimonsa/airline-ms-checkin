@@ -29,9 +29,14 @@ namespace CheckIn.Test.Application.UseCases
         {
             var tcs = new CancellationTokenSource(1000);
             var handler = new GetAllAdmHandler(admRepository.Object, logger.Object);
-           var result= handler.Handle(new GetAllAdmQuery(),tcs.Token);
+            var result = handler.Handle(new GetAllAdmQuery(), tcs.Token);
 
             Assert.NotNull(result.Result);
+
+            if (result.Result.Any())
+            {
+                Assert.NotEqual(Guid.Empty, result.Result.First().Id);
+            }
         }
     }
 }

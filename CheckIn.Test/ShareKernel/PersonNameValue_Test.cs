@@ -1,4 +1,7 @@
-﻿using ShareKernel.ValueObjects;
+﻿using Moq;
+using ShareKernel.Core;
+using ShareKernel.Rules;
+using ShareKernel.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +40,13 @@ namespace CheckIn.Test.ShareKernel
             {
                 Assert.NotNull(ex);
             }
+
+
+            var myMock = new StringNotNullOrEmptyRule(null);
+            var exception = new BussinessRuleValidationException(myMock);
+
+            Assert.NotNull(exception.BrokenRule);
+            Assert.NotNull(exception.ToString());
         }
     }
 }

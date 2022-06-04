@@ -18,11 +18,9 @@ namespace ShareKernel.Core
             Details = brokenRule.Message;
         }
 
-
-
-        protected BussinessRuleValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+        //protected BussinessRuleValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
+        //{
+        //}
 
         public BussinessRuleValidationException(string message) : base(message)
         {
