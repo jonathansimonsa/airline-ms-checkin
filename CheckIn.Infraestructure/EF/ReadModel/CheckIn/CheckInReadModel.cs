@@ -21,5 +21,9 @@ namespace CheckIn.Infraestructure.EF.ReadModel.CheckIn
 
         public ICollection<EquipajeReadModel> DetalleEquipaje { get; set; }
 
-}
+        public CheckInReadModel()
+        {
+            DetalleEquipaje = new List<EquipajeReadModel>();
+        }
+    }
 }
