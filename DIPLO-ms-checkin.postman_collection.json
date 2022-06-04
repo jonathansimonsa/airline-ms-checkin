@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "71e74f8a-2a85-4c01-bc00-92195f9a2349",
+		"name": "DIPLO-ms-checkin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1812197"
+	},
+	"item": [
+		{
+			"name": "Crear Adm",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let adm_list = pm.environment.get(\"adm_list\");\r",
+							"if (!adm_list || adm_list.length == 0) {\r",
+							"    adm_list = [\r",
+							"        {\r",
+							"            \"ci\": \"4587960\",\r",
+							"            \"nombres\": \"Roberto\",\r",
+							"            \"apellidos\": \"Luna\",\r",
+							"            \"cargo\": \"Piloto\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"ci\": \"1234567\",\r",
+							"            \"nombres\": \"Ana\",\r",
+							"            \"apellidos\": \"Villa\",\r",
+							"            \"cargo\": \"Vendedor\"\r",
+							"        }\r",
+							"    ];\r",
+							"}\r",
+							"let currentAdm = adm_list.shift();\r",
+							"pm.environment.set(\"caCi\", currentAdm.ci);\r",
+							"pm.environment.set(\"caNombres\", currentAdm.nombres);\r",
+							"pm.environment.set(\"caApellidos\", currentAdm.apellidos);\r",
+							"pm.environment.set(\"caCargo\", currentAdm.cargo);\r",
+							"pm.environment.set(\"adm_list\", adm_list);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    let respText = pm.response.text();\r",
+							"    pm.environment.set(\"adm_id\", respText.substring(1, respText.length - 1));\r",
+							"});\r",
+							"pm.test(\"Response not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ci\": \"{{caCi}}\",\r\n    \"nombres\": \"{{caNombres}}\",\r\n    \"apellidos\": \"{{caApellidos}}\",\r\n    \"cargo\": \"{{caCargo}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Administrativo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Administrativo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Asiento",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let asiento_list = pm.environment.get(\"asiento_list\");\r",
+							"if (!asiento_list || asiento_list.length == 0) {\r",
+							"    asiento_list = [\r",
+							"        {\r",
+							"            \"fila\": 1,\r",
+							"            \"letra\": \"A\",\r",
+							"            \"esPrioridad\": 1\r",
+							"        }, {\r",
+							"            \"fila\": 2,\r",
+							"            \"letra\": \"B\",\r",
+							"            \"esPrioridad\": 1\r",
+							"        }\r",
+							"    ];\r",
+							"}\r",
+							"let currentAsiento = asiento_list.shift();\r",
+							"pm.environment.set(\"caFila\", currentAsiento.fila);\r",
+							"pm.environment.set(\"caLetra\", currentAsiento.letra);\r",
+							"pm.environment.set(\"caEsPrioridad\", currentAsiento.esPrioridad);\r",
+							"pm.environment.set(\"asiento_list\", asiento_list);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    let respText = pm.response.text();\r",
+							"    pm.environment.set(\"asiento_id\", respText.substring(1, respText.length - 1));\r",
+							"});\r",
+							"pm.test(\"Response not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fila\": {{caFila}},\r\n    \"letra\": \"{{caletra}}\",\r\n    \"esPrioridad\": {{caEsPrioridad}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Asiento",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Asiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Ticket",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"let ticket_list = pm.environment.get(\"ticket_list\");\r",
+							"if (!ticket_list || ticket_list.length == 0) {\r",
+							"    ticket_list = [\r",
+							"        {\r",
+							"            \"horaReserva\": \"2022-06-01T04:18:59.172Z\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"horaReserva\": \"2022-06-02T04:20:59.172Z\"\r",
+							"        }\r",
+							"    ];\r",
+							"}\r",
+							"let currentTicket = ticket_list.shift();\r",
+							"pm.environment.set(\"ctHoraReserva\", currentTicket.horaReserva);\r",
+							"pm.environment.set(\"ticket_list\", ticket_list);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    let respText = pm.response.text();\r",
+							"    pm.environment.set(\"ticket_id\", respText.substring(1, respText.length - 1));\r",
+							"});\r",
+							"pm.test(\"Response not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"horaReserva\": \"{{ctHoraReserva}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Ticket",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Ticket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear CheckIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).not.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"altaPrioridad\": 1,\r\n  \"ticketId\": \"{{ticket_id}}\",\r\n  \"asientoId\": \"{{asiento_id}}\",\r\n  \"administrativoId\": \"{{adm_id}}\",\r\n  \"detalle\": [\r\n    {\r\n      \"descripcion\": \"Maleta #1\",\r\n      \"peso\": 5,\r\n      \"esFragil\": 1\r\n    },\r\n    {\r\n      \"descripcion\": \"Maleta #2\",\r\n      \"peso\": 7,\r\n      \"esFragil\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/CheckIn",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"CheckIn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
