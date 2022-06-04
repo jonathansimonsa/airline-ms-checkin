@@ -13,7 +13,6 @@ namespace CheckIn.Test.Domain.Event
         [Fact]
         public void CheckInCreado_CheckPropertiesValid()
         {
-            var id = Guid.NewGuid();
             var nroCheckIn = "QAZ";
             var horaCheckIn = DateTime.Now;
             var esAltaPrioridad = 1;
@@ -21,15 +20,17 @@ namespace CheckIn.Test.Domain.Event
             var asientoId = Guid.NewGuid();
             var administrativoId = Guid.NewGuid();
 
-            var obj = new CheckInCreado(id, nroCheckIn, horaCheckIn, esAltaPrioridad, ticketId, asientoId, administrativoId);
+            var obj = new CheckInCreado( nroCheckIn, horaCheckIn, esAltaPrioridad, ticketId, asientoId, administrativoId);
 
-            Assert.Equal(id, obj.Id);
             Assert.Equal(nroCheckIn, obj.NroCheckIn);
             Assert.Equal(horaCheckIn, obj.HoraCheckIn);
             Assert.Equal(esAltaPrioridad, obj.EsAltaPrioridad);
             Assert.Equal(ticketId, obj.TicketId);
             Assert.Equal(asientoId, obj.AsientoId);
             Assert.Equal(administrativoId, obj.AdministrativoId);
+
+            Assert.NotEqual(Guid.Empty,obj.Id);
+            Assert.NotEqual(1,obj.OccuredOn.Year);
         }
     }
 }

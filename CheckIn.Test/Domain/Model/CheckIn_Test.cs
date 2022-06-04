@@ -23,6 +23,10 @@ namespace CheckIn.Test.Domain.Model
             Assert.Equal(Guid.Empty, obj.AdministrativoId);
             Assert.Equal(0, obj.DetalleEquipaje.Count);
 
+            obj.ClearDomainEvents();
+            Assert.Empty(obj.DomainEvents);
+
+
             obj.ResetEquipajes();
             Assert.Empty(obj.DetalleEquipaje);
 
@@ -35,6 +39,7 @@ namespace CheckIn.Test.Domain.Model
             new_Numero = "Nro";
 
             Assert.NotEqual(".", new_Numero.Value);
+
         }
     }
 }

@@ -59,7 +59,7 @@ namespace CheckIn.Domain.Model.CheckIn
 
         public void ConsolidarCheckIn()
         {
-            var evento = new CheckInCreado(Id, NroCheckIn, HoraCheckIn, EsAltaPrioridad, TicketId, AsientoId, AdministrativoId);
+            var evento = new CheckInCreado( NroCheckIn, HoraCheckIn, EsAltaPrioridad, TicketId, AsientoId, AdministrativoId);
             AddDomainEvent(evento);
         }
 

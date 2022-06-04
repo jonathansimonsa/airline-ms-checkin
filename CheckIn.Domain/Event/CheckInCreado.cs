@@ -9,7 +9,6 @@ namespace CheckIn.Domain.Event
 {
     public record CheckInCreado : DomainEvent
     {
-        public Guid Id { get; }
         public string NroCheckIn { get; }
         public DateTime HoraCheckIn { get; }
         public int EsAltaPrioridad { get; }
@@ -17,10 +16,9 @@ namespace CheckIn.Domain.Event
         public Guid AsientoId { get; }
         public Guid AdministrativoId { get; }
 
-        public CheckInCreado(Guid id, string nroCheckIn, DateTime horaCheckIn, int esAltaPrioridad,
+        public CheckInCreado(string nroCheckIn, DateTime horaCheckIn, int esAltaPrioridad,
             Guid ticketId, Guid asientoId, Guid administrativoId) : base(DateTime.Now)
         {
-            Id = id;
             NroCheckIn = nroCheckIn;
             HoraCheckIn = horaCheckIn;
             EsAltaPrioridad = esAltaPrioridad;
