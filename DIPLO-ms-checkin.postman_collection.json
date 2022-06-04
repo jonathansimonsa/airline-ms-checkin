@@ -148,7 +148,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fila\": {{caFila}},\r\n    \"letra\": \"{{caletra}}\",\r\n    \"esPrioridad\": {{caEsPrioridad}}\r\n}",
+					"raw": "{\r\n    \"fila\": {{caFila}},\r\n    \"letra\": \"{{caLetra}}\",\r\n    \"esPrioridad\": {{caEsPrioridad}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
