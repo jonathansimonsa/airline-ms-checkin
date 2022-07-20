@@ -8,29 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CheckIn.WebApi.Controllers
-{
+namespace CheckIn.WebApi.Controllers {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class AdministrativoController : ControllerBase
-	{
+	public class AdministrativoController : ControllerBase {
 		private readonly IMediator _mediator;
 
-		public AdministrativoController(IMediator mediator)
-		{
+		public AdministrativoController(IMediator mediator) {
 			_mediator = mediator;
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] CrearAdmCommand command)
-		{
+		public async Task<IActionResult> Create([FromBody] CrearAdmCommand command) {
 			Guid id = await _mediator.Send(command);
 			return Ok(id);
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetAll([FromRoute] GetAllAdmQuery command)
-		{
+		public async Task<IActionResult> GetAll([FromRoute] GetAllAdmQuery command) {
 			List<AdministrativoDto> result = await _mediator.Send(command);
 			if (result == null)
 				return NotFound();

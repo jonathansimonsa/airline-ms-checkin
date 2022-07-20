@@ -1,4 +1,4 @@
-﻿using CheckIn.Domain.Event;
+using CheckIn.Domain.Event;
 using CheckIn.Infraestructure.EF.Config.Adm;
 using CheckIn.Infraestructure.EF.Config.Avion;
 using CheckIn.Infraestructure.EF.Config.CheckIn;
@@ -15,42 +15,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheckIn.Infraestructure.EF.Contexts
-{
-    public class ReadDbContext : DbContext
-    {
-        public virtual DbSet<CheckInReadModel> CheckIn_Db { get; set; }
-        public virtual DbSet<EquipajeReadModel> Equipaje_Db { get; set; }
-        public virtual DbSet<TicketReadModel> Ticket_Db { get; set; }
-        public virtual DbSet<AsientoReadModel> Asiento_Db { get; set; }
-        public virtual DbSet<AdministrativoReadModel> Adm_Db { get; set; }
+namespace CheckIn.Infraestructure.EF.Contexts {
+	public class ReadDbContext : DbContext {
+		public virtual DbSet<CheckInReadModel> CheckIn_Db { get; set; }
+		public virtual DbSet<EquipajeReadModel> Equipaje_Db { get; set; }
+		public virtual DbSet<TicketReadModel> Ticket_Db { get; set; }
+		public virtual DbSet<AsientoReadModel> Asiento_Db { get; set; }
+		public virtual DbSet<AdministrativoReadModel> Adm_Db { get; set; }
 
-        public ReadDbContext(DbContextOptions<ReadDbContext> options):base (options)
-        {
-        }
+		public ReadDbContext(DbContextOptions<ReadDbContext> options) : base(options) {
+		}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+		protected override void OnModelCreating(ModelBuilder modelBuilder) {
+			base.OnModelCreating(modelBuilder);
 
-            var checkInConfig = new CheckInReadConfig();
-            modelBuilder.ApplyConfiguration<CheckInReadModel>(checkInConfig);
+			var checkInConfig = new CheckInReadConfig();
+			modelBuilder.ApplyConfiguration<CheckInReadModel>(checkInConfig);
 
-            var equipajeConfig = new EquipajeReadConfig();
-            modelBuilder.ApplyConfiguration<EquipajeReadModel>(equipajeConfig);
+			var equipajeConfig = new EquipajeReadConfig();
+			modelBuilder.ApplyConfiguration<EquipajeReadModel>(equipajeConfig);
 
-            var ticketConfig = new TicketReadConfig();
-            modelBuilder.ApplyConfiguration<TicketReadModel>(ticketConfig);
+			var ticketConfig = new TicketReadConfig();
+			modelBuilder.ApplyConfiguration<TicketReadModel>(ticketConfig);
 
-            var asientoConfig = new AsientoReadConfig();
-            modelBuilder.ApplyConfiguration<AsientoReadModel>(asientoConfig);
+			var asientoConfig = new AsientoReadConfig();
+			modelBuilder.ApplyConfiguration<AsientoReadModel>(asientoConfig);
 
-            var admConfig = new AdmReadConfig();
-            modelBuilder.ApplyConfiguration<AdministrativoReadModel>(admConfig);
+			var admConfig = new AdmReadConfig();
+			modelBuilder.ApplyConfiguration<AdministrativoReadModel>(admConfig);
 
-            modelBuilder.Ignore<DomainEvent>();
-            modelBuilder.Ignore<CheckInCreado>();
-        }
+			modelBuilder.Ignore<DomainEvent>();
+			modelBuilder.Ignore<CheckInCreado>();
+		}
 
-    }
+	}
 }

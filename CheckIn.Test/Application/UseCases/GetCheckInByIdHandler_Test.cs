@@ -1,4 +1,4 @@
-﻿using CheckIn.Application.UseCases.CheckIn;
+using CheckIn.Application.UseCases.CheckIn;
 using CheckIn.Domain.Repositories;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -10,28 +10,24 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace CheckIn.Test.Application.UseCases
-{
-    public class GetCheckInByIdHandler_Test
-    {
+namespace CheckIn.Test.Application.UseCases {
+	public class GetCheckInByIdHandler_Test {
 
-        private readonly Mock<ICheckInRepository> checkInRepository;
-        private readonly Mock<ILogger<GetCheckInByIdQuery>> logger;
+		private readonly Mock<ICheckInRepository> checkInRepository;
+		private readonly Mock<ILogger<GetCheckInByIdQuery>> logger;
 
-        public GetCheckInByIdHandler_Test()
-        {
-            checkInRepository = new Mock<ICheckInRepository>();
-            logger = new Mock<ILogger<GetCheckInByIdQuery>>();
-        }
+		public GetCheckInByIdHandler_Test() {
+			checkInRepository = new Mock<ICheckInRepository>();
+			logger = new Mock<ILogger<GetCheckInByIdQuery>>();
+		}
 
-        [Fact]
-        public void Handler_Correctly()
-        {
-            var tcs = new CancellationTokenSource(1000);
-            var handler = new GetCheckInByIdHandler(checkInRepository.Object, logger.Object);
-            var result = handler.Handle(new GetCheckInByIdQuery(Guid.NewGuid()), tcs.Token);
+		[Fact]
+		public void Handler_Correctly() {
+			var tcs = new CancellationTokenSource(1000);
+			var handler = new GetCheckInByIdHandler(checkInRepository.Object, logger.Object);
+			var result = handler.Handle(new GetCheckInByIdQuery(Guid.NewGuid()), tcs.Token);
 
-            Assert.True(result.IsCompletedSuccessfully);
-        }
-    }
+			Assert.True(result.IsCompletedSuccessfully);
+		}
+	}
 }

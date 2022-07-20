@@ -1,4 +1,4 @@
-﻿using CheckIn.Application;
+using CheckIn.Application;
 using CheckIn.Domain.Repositories;
 using CheckIn.Infraestructure.EF;
 using CheckIn.Infraestructure.EF.Contexts;
@@ -15,31 +15,28 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CheckIn.Infraestructure
-{
-    public static class Extensions
-    {
-        public static IServiceCollection AddInfraestructure(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddAplication();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+namespace CheckIn.Infraestructure {
+	public static class Extensions {
+		public static IServiceCollection AddInfraestructure(this IServiceCollection services,
+			IConfiguration configuration) {
+			services.AddAplication();
+			services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            var connectionString = configuration.GetConnectionString("AeropuertoDbConnectionString");
+			var connectionString = configuration.GetConnectionString("AeropuertoDbConnectionString");
 
-            services.AddDbContext<ReadDbContext>(context =>
-            context.UseSqlServer(connectionString));
-            services.AddDbContext<WriteDbContext>(context =>
-            context.UseSqlServer(connectionString));
+			services.AddDbContext<ReadDbContext>(context =>
+			context.UseSqlServer(connectionString));
+			services.AddDbContext<WriteDbContext>(context =>
+			context.UseSqlServer(connectionString));
 
-            services.AddScoped<ICheckInRepository, CheckInRepository>();
-            services.AddScoped<ITicketRepository, TicketRepository>();
-            services.AddScoped<IAsientoRepository, AsientoRepository>();
-            services.AddScoped<IAdministrativoRepository, AdministrativoRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+			services.AddScoped<ICheckInRepository, CheckInRepository>();
+			services.AddScoped<ITicketRepository, TicketRepository>();
+			services.AddScoped<IAsientoRepository, AsientoRepository>();
+			services.AddScoped<IAdministrativoRepository, AdministrativoRepository>();
+			services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            return services;
-        }
+			return services;
+		}
 
-    }
+	}
 }
