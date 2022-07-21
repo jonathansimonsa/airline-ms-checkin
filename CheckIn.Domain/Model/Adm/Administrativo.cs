@@ -21,5 +21,7 @@ namespace CheckIn.Domain.Model.Adm {
 			Apellidos = apellidos;
 			Cargo = cargo;
 
+
+			Cargo = cargo;
 		}
 	}
