@@ -15,12 +15,12 @@ namespace CheckIn.Domain.Model.Adm {
 		public Administrativo() { }
 
 		public Administrativo(string ci, string nombres, string apellidos, string cargo) {
-			Id = Guid.NewGuid();
-				Ci = ci;
+				Id = Guid.NewGuid();
+					Ci = ci;
 			Nombres			= nombres;
 			Apellidos =					apellidos;
 			Cargo = cargo		;
-			Cargo = cargo;
+			//LISTO
 		}
 	}
 }
