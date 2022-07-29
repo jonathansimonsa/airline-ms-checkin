@@ -1,31 +1,31 @@
 {
-	"name": "airline-ms-checkin",
-	"version": "1.0.0",
-	"description": "Microservicio desarrollado en .Net Core para el Microservicio de Check In de una aerolinea",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"prepare": "husky install"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jonathansimonsa/airline-ms-checkin.git"
-	},
-	"keywords": [],
-	"author": "Jonathan Simons",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/jonathansimonsa/airline-ms-checkin/issues"
-	},
-	"homepage": "https://github.com/jonathansimonsa/airline-ms-checkin#readme",
-	"devDependencies": {
-		"husky": "^8.0.0"
-	},
-	"dependencies": {
-		"lint-staged": "^13.0.3",
-		"save-dev": "^0.0.1-security"
-	},
-	"lint-staged": {
-		"*.cs": "dotnet-format AeropuertoJSA.sln --include"
-	}
+  "name": "airline-ms-checkin",
+  "version": "1.0.0",
+  "description": "Microservicio desarrollado en .Net Core para el Microservicio de Check In de una aerolinea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathansimonsa/airline-ms-checkin.git"
+  },
+  "keywords": [],
+  "author": "Jonathan Simons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathansimonsa/airline-ms-checkin/issues"
+  },
+  "homepage": "https://github.com/jonathansimonsa/airline-ms-checkin#readme",
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3"
+  },
+  "dependencies": {
+    "save-dev": "^0.0.1-security"
+  },
+  "lint-staged": {
+    "*.cs": "dotnet-format AeropuertoJSA.sln --include"
+  }
 }
