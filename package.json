@@ -26,6 +26,6 @@
     "save-dev": "^0.0.1-security"
   },
   "lint-staged": {
-    "*.cs": "dotnet-format AeropuertoJSA.sln --include"
+    "*.cs": "dotnet format AeropuertoJSA.sln"
   }
 }
