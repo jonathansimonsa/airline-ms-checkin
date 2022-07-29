@@ -12,6 +12,7 @@ namespace CheckIn.Domain.Model.Adm {
 		public string Apellidos { get; private set; }
 		public string Cargo { get; private set; }
 		public string Jefe		{ get;		private set; }
+		public string Cuidad		{ get;		private set; }
 
 		public Administrativo() { }
 
