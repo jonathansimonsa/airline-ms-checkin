@@ -11,6 +11,7 @@ namespace CheckIn.Domain.Model.Adm {
 		public string Nombres { get; private set; }
 		public string Apellidos { get; private set; }
 		public string Cargo { get; private set; }
+		public string Jefe		{ get;		private set; }
 
 		public Administrativo() { }
 
@@ -20,7 +21,6 @@ namespace CheckIn.Domain.Model.Adm {
 			Nombres			= nombres;
 			Apellidos =					apellidos;
 			Cargo = cargo		;
-			//LISTO
 		}
 	}
 }
