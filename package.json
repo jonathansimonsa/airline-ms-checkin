@@ -12,20 +12,14 @@
     "url": "git+https://github.com/jonathansimonsa/airline-ms-checkin.git"
   },
   "keywords": [],
-  "author": "Jonathan Simons",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jonathansimonsa/airline-ms-checkin/issues"
   },
   "homepage": "https://github.com/jonathansimonsa/airline-ms-checkin#readme",
   "devDependencies": {
-    "husky": "^8.0.1",
-  },
-  "dependencies": {
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3"
-    "save-dev": "^0.0.1-security"
-  },
-  "lint-staged": {
-    "*.cs": "dotnet-format AeropuertoJSA.sln --include"
   }
 }
