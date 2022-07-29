@@ -19,8 +19,7 @@ namespace CheckIn.Domain.Model.Adm {
 			Ci = ci;
 			Nombres = nombres;
 			Apellidos = apellidos;
-			Cargo = cargo;
-			// FIXED
+			Cargo = Cargo;
 		}
 	}
 }
