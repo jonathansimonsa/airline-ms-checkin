@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Config.Adm {
-	public class AdmWriteConfig : IEntityTypeConfiguration<Domain.Model.Adm.Administrativo> {
+	public class AdmWriteConfig : IEntityTypeConfiguration<Administrativo> {
 		public void Configure(EntityTypeBuilder<Administrativo> builder) {
 			builder.ToTable("Administrativo");
 			builder.HasKey(x => x.Id);

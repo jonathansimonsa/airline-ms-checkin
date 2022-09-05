@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CheckIn.Infraestructure.EF.Migrations
 {
     [DbContext(typeof(ReadDbContext))]
-    [Migration("20220905191156_InitialStructure")]
+    [Migration("20220905195308_InitialStructure")]
     partial class InitialStructure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
