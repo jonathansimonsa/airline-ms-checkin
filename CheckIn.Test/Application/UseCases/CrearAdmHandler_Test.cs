@@ -16,7 +16,7 @@ using Xunit;
 namespace CheckIn.Test.Application.UseCases {
 	public class CrearAdmHandler_Test {
 		private readonly Mock<IAdministrativoRepository> admRepository;
-		private readonly Mock<ILogger<CrearAdmHandler>> logger;
+		private readonly Mock<ILogger<CreateAdmHandler>> logger;
 		private readonly Mock<IAdministrativoFactory> admFactory;
 		private readonly Mock<IUnitOfWork> unitOfWork;
 		private string ci = "1234567";
@@ -27,7 +27,7 @@ namespace CheckIn.Test.Application.UseCases {
 
 		public CrearAdmHandler_Test() {
 			admRepository = new Mock<IAdministrativoRepository>();
-			logger = new Mock<ILogger<CrearAdmHandler>>();
+			logger = new Mock<ILogger<CreateAdmHandler>>();
 			admFactory = new Mock<IAdministrativoFactory>();
 			unitOfWork = new Mock<IUnitOfWork>();
 			Adm_Test = new AdministrativoFactory().Create(ci, nombres, apellidos, cargo);
@@ -37,12 +37,12 @@ namespace CheckIn.Test.Application.UseCases {
 		public void CrearAdmHandler_HandlerCorrectly() {
 			admFactory.Setup(factory => factory.Create(ci, nombres, apellidos, cargo)).Returns(Adm_Test);
 
-			var objHandler = new CrearAdmHandler(
+			var objHandler = new CreateAdmHandler(
 				admRepository.Object,
 				logger.Object,
 				admFactory.Object,
 				unitOfWork.Object);
-			var objRequest = new CrearAdmCommand(ci, nombres, apellidos, cargo);
+			var objRequest = new CreateAdmCommand(ci, nombres, apellidos, cargo);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
@@ -52,13 +52,13 @@ namespace CheckIn.Test.Application.UseCases {
 		[Fact]
 		public void CrearAdmHandler_HandlerFail() {
 			// Failling by returning null values
-			var objHandler = new CrearAdmHandler(
+			var objHandler = new CreateAdmHandler(
 				admRepository.Object,
 				logger.Object,
 				admFactory.Object,
 				unitOfWork.Object);
 
-			var objRequest = new CrearAdmCommand(ci, nombres, apellidos, cargo);
+			var objRequest = new CreateAdmCommand(ci, nombres, apellidos, cargo);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);

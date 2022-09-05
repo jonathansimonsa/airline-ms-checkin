@@ -1,4 +1,5 @@
 using CheckIn.Application.Dto.Ticket;
+using CheckIn.Application.UseCases.Adm;
 using CheckIn.Application.UseCases.Ticket;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -18,18 +19,25 @@ namespace CheckIn.WebApi.Controllers {
 			_mediator = mediator;
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] CrearTicketComand command) {
-			Guid id = await _mediator.Send(command);
-			return Ok(id);
-		}
-
 		[HttpGet]
 		public async Task<IActionResult> GetAll([FromRoute] GetAllTicketQuery command) {
 			List<TicketDto> result = await _mediator.Send(command);
 			if (result == null)
 				return NotFound();
 
+			return Ok(result);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Create([FromBody] CreateTicketCommand command) {
+			Guid id = await _mediator.Send(command);
+			return Ok(id);
+		}
+
+		[HttpDelete]
+		public async Task<IActionResult> Delete(Guid id) {
+			DeleteTicketCommand query = new DeleteTicketCommand(id);
+			Guid result = await _mediator.Send(query);
 			return Ok(result);
 		}
 	}

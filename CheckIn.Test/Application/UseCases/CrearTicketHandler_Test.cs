@@ -15,31 +15,33 @@ using Xunit;
 
 namespace CheckIn.Test.Application.UseCases {
 	public class CrearTicketHandler_Test {
-		private readonly Mock<ITicketRepository> asientoRepository;
-		private readonly Mock<ILogger<CrearTicketHandler>> logger;
-		private readonly Mock<ITicketFactory> asientoFactory;
+		private readonly Mock<ITicketRepository> ticketRepository;
+		private readonly Mock<ILogger<CreateTicketHandler>> logger;
+		private readonly Mock<ITicketFactory> ticketFactory;
 		private readonly Mock<IUnitOfWork> unitOfWork;
+		private int nroTicket = 7;
 		private DateTime horaReserva = DateTime.Now;
+		private Guid vueloId = Guid.NewGuid();
 		private Ticket Ticket_Test;
 
 		public CrearTicketHandler_Test() {
-			asientoRepository = new Mock<ITicketRepository>();
-			logger = new Mock<ILogger<CrearTicketHandler>>();
-			asientoFactory = new Mock<ITicketFactory>();
+			ticketRepository = new Mock<ITicketRepository>();
+			logger = new Mock<ILogger<CreateTicketHandler>>();
+			ticketFactory = new Mock<ITicketFactory>();
 			unitOfWork = new Mock<IUnitOfWork>();
-			Ticket_Test = new TicketFactory().Create(horaReserva);
+			Ticket_Test = new TicketFactory().Create(nroTicket, horaReserva, vueloId);
 		}
 
 		[Fact]
 		public void CrearTicketHandler_HandlerCorrectly() {
-			asientoFactory.Setup(factory => factory.Create(horaReserva)).Returns(Ticket_Test);
+			ticketFactory.Setup(factory => factory.Create(nroTicket, horaReserva, vueloId)).Returns(Ticket_Test);
 
-			var objHandler = new CrearTicketHandler(
-				asientoRepository.Object,
+			var objHandler = new CreateTicketHandler(
+				ticketRepository.Object,
 				logger.Object,
-				asientoFactory.Object,
+				ticketFactory.Object,
 				unitOfWork.Object);
-			var objRequest = new CrearTicketComand(horaReserva);
+			var objRequest = new CreateTicketCommand(horaReserva, vueloId);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
@@ -49,13 +51,13 @@ namespace CheckIn.Test.Application.UseCases {
 		[Fact]
 		public void CrearTicketHandler_HandlerFail() {
 			// Failling by returning null values
-			var objHandler = new CrearTicketHandler(
-				asientoRepository.Object,
+			var objHandler = new CreateTicketHandler(
+				ticketRepository.Object,
 				logger.Object,
-				asientoFactory.Object,
+				ticketFactory.Object,
 				unitOfWork.Object);
 
-			var objRequest = new CrearTicketComand(horaReserva);
+			var objRequest = new CreateTicketCommand(horaReserva, vueloId);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);

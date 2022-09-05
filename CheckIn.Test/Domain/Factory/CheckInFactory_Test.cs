@@ -12,18 +12,21 @@ namespace CheckIn.Test.Domain.Factory {
 		public void Create_Correctly() {
 			string nro_test = "QAZ";
 			int prioridad_test = 1;
+			string letraAsiento_test = "P";
+			int nroAsiento_test = 7;
 			Guid ticketId_test = Guid.NewGuid();
-			Guid asientoId_test = Guid.NewGuid();
+			Guid vueloId_test = Guid.NewGuid();
 			Guid admId_test = Guid.NewGuid();
 
 			var factory = new CheckInFactory();
-			var obj = factory.Create(nro_test, prioridad_test, ticketId_test, asientoId_test, admId_test);
+			var obj = factory.Create(nro_test, prioridad_test, letraAsiento_test, nroAsiento_test, ticketId_test, vueloId_test, admId_test);
 
 			Assert.NotNull(obj);
 			Assert.Equal(nro_test, obj.NroCheckIn);
 			Assert.Equal(prioridad_test, obj.EsAltaPrioridad);
+			Assert.Equal(letraAsiento_test, obj.LetraAsiento);
+			Assert.Equal(nroAsiento_test, obj.NroAsiento);
 			Assert.Equal(ticketId_test, obj.TicketId);
-			Assert.Equal(asientoId_test, obj.AsientoId);
 			Assert.Equal(admId_test, obj.AdministrativoId);
 		}
 	}

@@ -12,16 +12,19 @@ namespace CheckIn.Test.Application.UseCases {
 		[Fact]
 		public void CrearTicketCommand_DataValid() {
 			var horaReserva = DateTime.Now;
-			var command = new CrearTicketComand(horaReserva);
+			var vueloId = Guid.NewGuid();
+			var command = new CreateTicketCommand(horaReserva, vueloId);
 
 			Assert.Equal(horaReserva, command.HoraReserva);
+			Assert.Equal(vueloId, command.VueloId);
 		}
 
 		[Fact]
 		public void Constructor_isPridate() {
-			var command = (CrearTicketComand)Activator.CreateInstance(typeof(CrearTicketComand), true);
+			var command = (CreateTicketCommand)Activator.CreateInstance(typeof(CreateTicketCommand), true);
 
 			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), command.HoraReserva);
+			Assert.Equal(Guid.Empty, command.VueloId);
 		}
 	}
 }

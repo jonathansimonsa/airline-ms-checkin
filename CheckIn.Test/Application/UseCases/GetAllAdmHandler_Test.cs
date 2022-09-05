@@ -14,11 +14,11 @@ using Xunit;
 namespace CheckIn.Test.Application.UseCases {
 	public class GetAllAdmHandler_Test {
 		private readonly Mock<IAdministrativoRepository> admRepository;
-		private readonly Mock<ILogger<GetAllAdmQuery>> logger;
+		private readonly Mock<ILogger<GetAllAdmHandler>> logger;
 
 		public GetAllAdmHandler_Test() {
 			admRepository = new Mock<IAdministrativoRepository>();
-			logger = new Mock<ILogger<GetAllAdmQuery>>();
+			logger = new Mock<ILogger<GetAllAdmHandler>>();
 		}
 
 		[Fact]

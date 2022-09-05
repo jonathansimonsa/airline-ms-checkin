@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Repositories {
 	public interface IAdministrativoRepository : IRepository<Model.Adm.Administrativo, Guid> {
-		Task<List<Model.Adm.Administrativo>> GellAll();
+		Task<List<Model.Adm.Administrativo>> GetAll();
 
 		Task Updateasync(Model.Adm.Administrativo obj);
+
+		Task Deleteasync(Model.Adm.Administrativo obj);
 	}
 }

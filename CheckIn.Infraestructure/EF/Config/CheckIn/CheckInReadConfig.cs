@@ -25,6 +25,14 @@ namespace CheckIn.Infraestructure.EF.Config.CheckIn {
 				.HasColumnName("esAltaPrioridad")
 				.HasColumnType("int");
 
+			builder.Property(x => x.LetraAsiento)
+				.HasColumnName("letraAsiento")
+				.HasMaxLength(10);
+
+			builder.Property(x => x.NroAsiento)
+				.HasColumnName("nroAsiento")
+				.HasColumnType("int");
+
 			builder.HasMany(x => x.DetalleEquipaje)
 						  .WithOne(x => x.CheckIn);
 		}

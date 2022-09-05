@@ -14,11 +14,11 @@ namespace CheckIn.Test.Application.UseCases {
 	public class GetAllTicketHandler_Test {
 
 		private readonly Mock<ITicketRepository> asientoRepository;
-		private readonly Mock<ILogger<GetAllTicketQuery>> logger;
+		private readonly Mock<ILogger<GetAllTicketHandler>> logger;
 
 		public GetAllTicketHandler_Test() {
 			asientoRepository = new Mock<ITicketRepository>();
-			logger = new Mock<ILogger<GetAllTicketQuery>>();
+			logger = new Mock<ILogger<GetAllTicketHandler>>();
 		}
 
 		[Fact]

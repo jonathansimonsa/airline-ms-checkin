@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 namespace CheckIn.Application.UseCases.CheckIn {
 	public class GetCheckInByIdHandler : IRequestHandler<GetCheckInByIdQuery, CheckInDto> {
 		private readonly ICheckInRepository _checkInRepository;
-		private readonly ILogger<GetCheckInByIdQuery> _logger;
+		private readonly ILogger<GetCheckInByIdHandler> _logger;
 
-		public GetCheckInByIdHandler(ICheckInRepository checkInRepository, ILogger<GetCheckInByIdQuery> logger) {
+		public GetCheckInByIdHandler(ICheckInRepository checkInRepository, ILogger<GetCheckInByIdHandler> logger) {
 			_checkInRepository = checkInRepository;
 			_logger = logger;
 		}
@@ -29,8 +29,10 @@ namespace CheckIn.Application.UseCases.CheckIn {
 					NroCheckIn = obj.NroCheckIn,
 					HoraCheckIn = obj.HoraCheckIn,
 					EsAltaPrioridad = obj.EsAltaPrioridad,
+					LetraAsiento = obj.LetraAsiento,
+					NroAsiento = obj.NroAsiento,
 					TicketId = obj.TicketId,
-					AsientoId = obj.AsientoId,
+					VueloId = obj.VueloId,
 					AdministrativoId = obj.AdministrativoId,
 				};
 

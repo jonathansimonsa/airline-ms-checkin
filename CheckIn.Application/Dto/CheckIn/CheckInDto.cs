@@ -11,8 +11,10 @@ namespace CheckIn.Application.Dto.CheckIn {
 		public string NroCheckIn { get; set; }
 		public DateTime HoraCheckIn { get; set; }
 		public int EsAltaPrioridad { get; set; }
+		public string LetraAsiento { get; set; }
+		public int NroAsiento { get; set; }
 		public Guid TicketId { get; set; }
-		public Guid AsientoId { get; set; }
+		public Guid VueloId { get; set; }
 		public Guid AdministrativoId { get; set; }
 
 		public ICollection<EquipajeDto> DetalleEquipaje { get; set; }

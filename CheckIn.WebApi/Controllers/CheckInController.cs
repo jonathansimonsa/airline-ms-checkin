@@ -1,5 +1,6 @@
 using CheckIn.Application.Dto.CheckIn;
 using CheckIn.Application.UseCases.CheckIn;
+using CheckIn.Application.UseCases.Ticket;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,6 @@ namespace CheckIn.WebApi.Controllers {
 
 		public CheckInController(IMediator mediator) {
 			_mediator = mediator;
-		}
-
-		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] CrearCheckInCommand command) {
-			Guid id = await _mediator.Send(command);
-			return Ok(id);
 		}
 
 		[HttpGet]
@@ -43,17 +38,18 @@ namespace CheckIn.WebApi.Controllers {
 			return Ok(result);
 		}
 
-		//[Route("search")]
-		//[HttpPost]
-		//public async Task<IActionResult> Search([FromBody] SearchPedidosQuery query)
-		//{
-		//    var pedidos = await _mediator.Send(query);
+		[HttpPost]
+		public async Task<IActionResult> Create([FromBody] CreateCheckInCommand command) {
+			Guid id = await _mediator.Send(command);
+			return Ok(id);
+		}
 
-		//    if (pedidos == null)
-		//        return BadRequest();
-
-		//    return Ok(pedidos);
-		//}
+		[HttpDelete]
+		public async Task<IActionResult> Delete(Guid id) {
+			DeleteCheckInCommand query = new DeleteCheckInCommand(id);
+			Guid result = await _mediator.Send(query);
+			return Ok(result);
+		}
 
 	}
 }

@@ -1,8 +1,8 @@
 using CheckIn.Domain.Event;
 using CheckIn.Domain.Model.Adm;
-using CheckIn.Domain.Model.Avion;
 using CheckIn.Domain.Model.CheckIn;
 using CheckIn.Domain.Model.Ticket;
+using CheckIn.Domain.Model.Vuelo;
 using CheckIn.Infraestructure.EF.Config.CheckIn;
 using Microsoft.EntityFrameworkCore;
 using ShareKernel.Core;
@@ -15,11 +15,11 @@ using System.Threading.Tasks;
 namespace CheckIn.Infraestructure.EF.Contexts {
 	public class WriteDbContext : DbContext {
 
+		public virtual DbSet<Administrativo> Administrativo { get; set; }
+		public virtual DbSet<Vuelo> Vuelo { get; set; }
+		public virtual DbSet<Ticket> Ticket { get; set; }
 		public virtual DbSet<Domain.Model.CheckIn.CheckIn> CheckIn { get; set; }
 		public virtual DbSet<Equipaje> Equipaje { get; set; }
-		public virtual DbSet<Ticket> Ticket { get; set; }
-		public virtual DbSet<Asiento> Asiento { get; set; }
-		public virtual DbSet<Administrativo> Administrativo { get; set; }
 
 		public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options) { }
 
