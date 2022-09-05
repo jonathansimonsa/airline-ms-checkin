@@ -55,7 +55,9 @@ namespace CheckIn.Application.UseCases.CheckIn {
 
 				var nroAsiento = checkVuelo_lista.Count + 1;
 
-				Domain.Model.CheckIn.CheckIn objCheckIn = _checkInFactory.Create(nro + newId,
+				var subId = checkTicket_lista.Count + 1;
+
+				Domain.Model.CheckIn.CheckIn objCheckIn = _checkInFactory.Create(nro + newId + "-CV-" + subId,
 					request.EsAltaPrioridad,
 					request.EsAltaPrioridad == 1 ? "P" : "N",
 					nroAsiento,
