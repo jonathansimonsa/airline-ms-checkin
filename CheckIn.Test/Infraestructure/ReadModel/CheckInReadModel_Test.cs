@@ -1,5 +1,4 @@
 using CheckIn.Infraestructure.EF.ReadModel.Adm;
-using CheckIn.Infraestructure.EF.ReadModel.Avion;
 using CheckIn.Infraestructure.EF.ReadModel.CheckIn;
 using CheckIn.Infraestructure.EF.ReadModel.Ticket;
 using System;
@@ -18,10 +17,11 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			var idTest = Guid.NewGuid();
 			var nroCheckInTest = "QAZ";
 			var horaTest = DateTime.Now;
-			var prioridadTest = true;
+			var prioridadTest = 1;
+			var letraAsientoTest = "P";
+			var nroAsientoTest = 7;
 			var detalleTest = getDetalleCheckIn();
 			var ticketIdTest = new TicketReadModel();
-			var asientoIdTest = new AsientoReadModel();
 			var admIdTest = new AdministrativoReadModel();
 
 			var obj = new CheckInReadModel();
@@ -29,9 +29,10 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			Assert.Equal(Guid.Empty, obj.Id);
 			Assert.Null(obj.NroCheckIn);
 			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.HoraCheckIn);
-			Assert.False(obj.EsAltaPrioridad);
+			Assert.Equal(0, obj.EsAltaPrioridad);
+			Assert.Null(obj.LetraAsiento);
+			Assert.Equal(0, obj.NroAsiento);
 			Assert.Null(obj.Ticket);
-			Assert.Null(obj.Asiento);
 			Assert.Null(obj.Administrativo);
 			Assert.Empty(obj.DetalleEquipaje);
 
@@ -39,17 +40,19 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			obj.NroCheckIn = nroCheckInTest;
 			obj.HoraCheckIn = horaTest;
 			obj.EsAltaPrioridad = prioridadTest;
+			obj.LetraAsiento = letraAsientoTest;
+			obj.NroAsiento = nroAsientoTest;
 			obj.DetalleEquipaje = detalleTest;
 			obj.Ticket = ticketIdTest;
-			obj.Asiento = asientoIdTest;
 			obj.Administrativo = admIdTest;
 
 			Assert.Equal(idTest, obj.Id);
 			Assert.Equal(nroCheckInTest, obj.NroCheckIn);
 			Assert.Equal(horaTest, obj.HoraCheckIn);
 			Assert.Equal(prioridadTest, obj.EsAltaPrioridad);
+			Assert.Equal(letraAsientoTest, obj.LetraAsiento);
+			Assert.Equal(nroAsientoTest, obj.NroAsiento);
 			Assert.Equal(ticketIdTest, obj.Ticket);
-			Assert.Equal(asientoIdTest, obj.Asiento);
 			Assert.Equal(admIdTest, obj.Administrativo);
 			Assert.Equal(detalleTest.Count, obj.DetalleEquipaje.Count);
 		}

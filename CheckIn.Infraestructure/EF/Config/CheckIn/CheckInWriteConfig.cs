@@ -23,16 +23,23 @@ namespace CheckIn.Infraestructure.EF.Config.CheckIn {
 			builder.Property(x => x.NroCheckIn)
 				.HasConversion(nroCheckInConverter)
 				.HasColumnName("nroCheckIn")
-				.HasMaxLength(6);
+				.HasMaxLength(10);
 
 			builder.Property(x => x.HoraCheckIn)
-				.HasColumnType("datetime")
-				.HasColumnName("horaCheckIn");
+				.HasColumnName("horaCheckIn")
+				.HasColumnType("datetime");
 
 			builder.Property(x => x.EsAltaPrioridad)
-				.HasColumnType("decimal")
 				.HasColumnName("esAltaPrioridad")
-				.HasPrecision(12, 2);
+				.HasColumnType("int");
+
+			builder.Property(x => x.LetraAsiento)
+				.HasColumnName("letraAsiento")
+				.HasMaxLength(10);
+
+			builder.Property(x => x.NroAsiento)
+				.HasColumnName("nroAsiento")
+				.HasColumnType("int");
 
 			builder.HasMany(typeof(Equipaje), "_DetalleEquipaje");
 

@@ -16,8 +16,8 @@ namespace CheckIn.Infraestructure.EF.Config.CheckIn {
 			builder.HasKey(x => x.Id);
 
 			builder.Property(x => x.Descripcion)
-				.HasMaxLength(500)
-				.HasColumnName("descripcion");
+				.HasColumnName("descripcion")
+				.HasMaxLength(500);
 
 			var pesoConverter = new ValueConverter<PesoValue, decimal>(
 				pesoValue => pesoValue.ValorKg,
@@ -25,13 +25,13 @@ namespace CheckIn.Infraestructure.EF.Config.CheckIn {
 			);
 
 			builder.Property(x => x.Peso)
-				.HasConversion(pesoConverter)
 				.HasColumnName("peso")
+				.HasConversion(pesoConverter)
 				.HasPrecision(12, 2);
 
 			builder.Property(x => x.EsFragil)
-				.HasColumnType("int")
-				.HasColumnName("esFragil");
+				.HasColumnName("esFragil")
+				.HasColumnType("int");
 
 			builder.Ignore("_domainEvents");
 			builder.Ignore(x => x.DomainEvents);

@@ -14,11 +14,11 @@ namespace CheckIn.Test.Application.UseCases {
 	public class GetCheckInByIdHandler_Test {
 
 		private readonly Mock<ICheckInRepository> checkInRepository;
-		private readonly Mock<ILogger<GetCheckInByIdQuery>> logger;
+		private readonly Mock<ILogger<GetCheckInByIdHandler>> logger;
 
 		public GetCheckInByIdHandler_Test() {
 			checkInRepository = new Mock<ICheckInRepository>();
-			logger = new Mock<ILogger<GetCheckInByIdQuery>>();
+			logger = new Mock<ILogger<GetCheckInByIdHandler>>();
 		}
 
 		[Fact]

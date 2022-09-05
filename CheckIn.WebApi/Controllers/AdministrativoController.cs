@@ -1,5 +1,7 @@
 using CheckIn.Application.Dto.Adm;
+using CheckIn.Application.Dto.CheckIn;
 using CheckIn.Application.UseCases.Adm;
+using CheckIn.Application.UseCases.CheckIn;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +20,6 @@ namespace CheckIn.WebApi.Controllers {
 			_mediator = mediator;
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] CrearAdmCommand command) {
-			Guid id = await _mediator.Send(command);
-			return Ok(id);
-		}
-
 		[HttpGet]
 		public async Task<IActionResult> GetAll([FromRoute] GetAllAdmQuery command) {
 			List<AdministrativoDto> result = await _mediator.Send(command);
@@ -33,16 +29,35 @@ namespace CheckIn.WebApi.Controllers {
 			return Ok(result);
 		}
 
-		/* [Route("{id:guid}")]
-		 [HttpGet]
-		 public async Task<IActionResult> GetById([FromRoute] GetCheckInByIdQuery command)
-		 {
-			CheckInDto result = await _mediator.Send(command);
-
+		[Route("{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> GetById(Guid id) {
+			GetAdmByIdQuery query = new GetAdmByIdQuery(id);
+			AdministrativoDto result = await _mediator.Send(query);
 			if (result == null)
-			    return NotFound();
+				return NotFound();
 
 			return Ok(result);
-		 }*/
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Create([FromBody] CreateAdmCommand command) {
+			Guid id = await _mediator.Send(command);
+			return Ok(id);
+		}
+
+		[HttpPut]
+		public async Task<IActionResult> Update([FromBody] CreateAdmCommand command) {
+			Guid id = await _mediator.Send(command);
+			return Ok(id);
+		}
+
+		[HttpDelete]
+		public async Task<IActionResult> Delete(Guid id) {
+			DeleteAdmCommand query = new DeleteAdmCommand(id);
+			Guid result = await _mediator.Send(query);
+			return Ok(result);
+		}
+
 	}
 }

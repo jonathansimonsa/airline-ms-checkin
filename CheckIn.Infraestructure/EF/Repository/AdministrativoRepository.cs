@@ -24,12 +24,16 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			return _adm.SingleAsync(x => x.Id == id);
 		}
 
-		public Task<List<Administrativo>> GellAll() {
+		public Task<List<Administrativo>> GetAll() {
 			return _adm.ToListAsync();
 		}
 
 		public Task Updateasync(Administrativo obj) {
 			_adm.Update(obj);
+			return Task.CompletedTask;
+		}
+		public Task Deleteasync(Administrativo obj) {
+			_adm.Remove(obj);
 			return Task.CompletedTask;
 		}
 	}

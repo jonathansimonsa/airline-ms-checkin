@@ -1,3 +1,6 @@
+using CheckIn.Domain.Model.Adm;
+using CheckIn.Domain.Model.Ticket;
+using CheckIn.Domain.Model.Vuelo;
 using CheckIn.Domain.Repositories;
 using CheckIn.Infraestructure.EF.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +27,7 @@ namespace CheckIn.Infraestructure.EF.Repository {
 				.SingleAsync(x => x.Id == id);
 		}
 
-		public Task<List<Domain.Model.CheckIn.CheckIn>> GellAll() {
+		public Task<List<Domain.Model.CheckIn.CheckIn>> GetAll() {
 			return _checkIn.Include("_DetalleEquipaje").ToListAsync();
 		}
 
@@ -32,6 +35,17 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			_checkIn.Update(obj);
 			return Task.CompletedTask;
 		}
+		public Task Deleteasync(Domain.Model.CheckIn.CheckIn obj) {
+			_checkIn.Remove(obj);
+			return Task.CompletedTask;
+		}
 
+		public Task<List<Domain.Model.CheckIn.CheckIn>> GetByVueloAndPrioridad(Guid vueloId, int esAltaPrioridad) {
+			return _checkIn.Where(p => p.VueloId == vueloId && p.EsAltaPrioridad == esAltaPrioridad).ToListAsync();
+		}
+
+		public Task<List<Domain.Model.CheckIn.CheckIn>> GetByTicketId(Guid ticketId) {
+			return _checkIn.Where(p => p.TicketId == ticketId).ToListAsync();
+		}
 	}
 }

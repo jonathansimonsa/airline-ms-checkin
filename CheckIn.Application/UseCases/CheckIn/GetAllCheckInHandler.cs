@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 namespace CheckIn.Application.UseCases.CheckIn {
 	public class GetAllCheckInHandler : IRequestHandler<GetAllCheckInQuery, List<CheckInDto>> {
 		private readonly ICheckInRepository _checkInRepository;
-		private readonly ILogger<GetAllCheckInQuery> _logger;
+		private readonly ILogger<GetAllCheckInHandler> _logger;
 
-		public GetAllCheckInHandler(ICheckInRepository checkInRepository, ILogger<GetAllCheckInQuery> logger) {
+		public GetAllCheckInHandler(ICheckInRepository checkInRepository, ILogger<GetAllCheckInHandler> logger) {
 			_checkInRepository = checkInRepository;
 			_logger = logger;
 		}
@@ -22,15 +22,17 @@ namespace CheckIn.Application.UseCases.CheckIn {
 		public async Task<List<CheckInDto>> Handle(GetAllCheckInQuery request, CancellationToken cancellationToken) {
 			List<CheckInDto> result = new List<CheckInDto>();
 			try {
-				List<Domain.Model.CheckIn.CheckIn> lista = await _checkInRepository.GellAll();
+				List<Domain.Model.CheckIn.CheckIn> lista = await _checkInRepository.GetAll();
 				foreach (var obj in lista) {
 					CheckInDto nuevo = new CheckInDto() {
 						Id = obj.Id,
 						NroCheckIn = obj.NroCheckIn,
 						HoraCheckIn = obj.HoraCheckIn,
 						EsAltaPrioridad = obj.EsAltaPrioridad,
+						LetraAsiento = obj.LetraAsiento,
+						NroAsiento = obj.NroAsiento,
 						TicketId = obj.TicketId,
-						AsientoId = obj.AsientoId,
+						VueloId = obj.VueloId,
 						AdministrativoId = obj.AdministrativoId
 					};
 
@@ -48,7 +50,7 @@ namespace CheckIn.Application.UseCases.CheckIn {
 			catch (Exception ex) {
 				_logger.LogError(ex, "Error al obtener Todos los CheckIn.");
 			}
-			return result;
+			return result.OrderBy(o => o.NroCheckIn).ToList();
 		}
 
 	}

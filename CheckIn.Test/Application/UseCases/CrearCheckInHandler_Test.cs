@@ -17,14 +17,17 @@ using Xunit;
 namespace CheckIn.Test.Application.UseCases {
 	public class CrearCheckInHandler_Test {
 		private readonly Mock<ICheckInRepository> checkInRepository;
-		private readonly Mock<ILogger<CrearCheckInHandler>> logger;
+		private readonly Mock<ILogger<CreateCheckInHandler>> logger;
 		private readonly Mock<ICheckInService> checkInService;
 		private readonly Mock<ICheckInFactory> checkInFactory;
 		private readonly Mock<IUnitOfWork> unitOfWork;
+		private readonly Mock<ITicketRepository> ticketRepository;
 		private string nroCheckIn = "QAZ";
 		private int esAltaPrioridad = 1;
+		private string letraAsiento = "P";
+		private int nroAsiento = 7;
 		private Guid ticketId = Guid.NewGuid();
-		private Guid asientoId = Guid.NewGuid();
+		private Guid vueloId = Guid.NewGuid();
 		private Guid checkInId = Guid.NewGuid();
 		private List<EquipajeDto> detalle = new List<EquipajeDto>() {
 				new EquipajeDto() { Id = Guid.NewGuid(), Descripcion = "maleta #1", Peso = 7, EsFragil = 1 },
@@ -33,25 +36,27 @@ namespace CheckIn.Test.Application.UseCases {
 
 		public CrearCheckInHandler_Test() {
 			checkInRepository = new Mock<ICheckInRepository>();
-			logger = new Mock<ILogger<CrearCheckInHandler>>();
+			logger = new Mock<ILogger<CreateCheckInHandler>>();
 			checkInService = new Mock<ICheckInService>();
 			checkInFactory = new Mock<ICheckInFactory>();
 			unitOfWork = new Mock<IUnitOfWork>();
-			CheckIn_Test = new CheckInFactory().Create(nroCheckIn, esAltaPrioridad, ticketId, asientoId, checkInId);
+			CheckIn_Test = new CheckInFactory().Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, checkInId);
+			ticketRepository = new Mock<ITicketRepository>();
 		}
 
 		[Fact]
 		public void CrearCheckInHandler_HandlerCorrectly() {
 			checkInService.Setup(checkInService => checkInService.GenerarNroCheckInAsync()).Returns(Task.FromResult(nroCheckIn));
-			checkInFactory.Setup(factory => factory.Create(nroCheckIn, esAltaPrioridad, ticketId, asientoId, checkInId)).Returns(CheckIn_Test);
+			checkInFactory.Setup(factory => factory.Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, checkInId)).Returns(CheckIn_Test);
 
-			var objHandler = new CrearCheckInHandler(
+			var objHandler = new CreateCheckInHandler(
 				checkInRepository.Object,
 				logger.Object,
 				checkInService.Object,
 				checkInFactory.Object,
-				unitOfWork.Object);
-			var objRequest = new CrearCheckInCommand(esAltaPrioridad, ticketId, asientoId, checkInId, detalle);
+				unitOfWork.Object,
+				ticketRepository.Object);
+			var objRequest = new CreateCheckInCommand(esAltaPrioridad, ticketId, checkInId, detalle);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
@@ -61,14 +66,15 @@ namespace CheckIn.Test.Application.UseCases {
 		[Fact]
 		public void CrearCheckInHandler_HandlerFail() {
 			// Failling by returning null values
-			var objHandler = new CrearCheckInHandler(
+			var objHandler = new CreateCheckInHandler(
 				checkInRepository.Object,
 				logger.Object,
 				checkInService.Object,
 				checkInFactory.Object,
-				unitOfWork.Object);
+				unitOfWork.Object,
+				ticketRepository.Object);
 
-			var objRequest = new CrearCheckInCommand(esAltaPrioridad, ticketId, asientoId, checkInId, detalle);
+			var objRequest = new CreateCheckInCommand(esAltaPrioridad, ticketId, checkInId, detalle);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);

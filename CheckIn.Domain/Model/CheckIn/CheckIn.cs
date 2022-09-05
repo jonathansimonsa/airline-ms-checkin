@@ -11,8 +11,10 @@ namespace CheckIn.Domain.Model.CheckIn {
 		public NumeroCheckInValue NroCheckIn { get; private set; }
 		public DateTime HoraCheckIn { get; private set; }
 		public int EsAltaPrioridad { get; private set; }
+		public string LetraAsiento { get; set; }
+		public int NroAsiento { get; set; }
 		public Guid TicketId { get; private set; }
-		public Guid AsientoId { get; private set; }
+		public Guid VueloId { get; private set; }
 		public Guid AdministrativoId { get; private set; }
 
 		private ICollection<Equipaje> _DetalleEquipaje;
@@ -28,13 +30,15 @@ namespace CheckIn.Domain.Model.CheckIn {
 			_DetalleEquipaje = new List<Equipaje>();
 		}
 
-		public CheckIn(string nroCheckIn, int esAltaPrioridad, Guid ticketId, Guid asientoId, Guid administrativoId) {
+		public CheckIn(string nroCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento, Guid ticketId, Guid vueloId, Guid administrativoId) {
 			Id = Guid.NewGuid();
 			NroCheckIn = new NumeroCheckInValue(nroCheckIn);
 			EsAltaPrioridad = esAltaPrioridad;
+			LetraAsiento = letraAsiento;
+			NroAsiento = nroAsiento;
 			HoraCheckIn = DateTime.Now;
 			TicketId = ticketId;
-			AsientoId = asientoId;
+			VueloId = vueloId;
 			AdministrativoId = administrativoId;
 			_DetalleEquipaje = new List<Equipaje>();
 		}
@@ -50,7 +54,7 @@ namespace CheckIn.Domain.Model.CheckIn {
 		}
 
 		public void ConsolidarCheckIn() {
-			var evento = new CheckInCreado(NroCheckIn, HoraCheckIn, EsAltaPrioridad, TicketId, AsientoId, AdministrativoId);
+			var evento = new CheckInCreado(NroCheckIn, HoraCheckIn, EsAltaPrioridad, LetraAsiento, NroAsiento, TicketId, AdministrativoId);
 			AddDomainEvent(evento);
 		}
 
