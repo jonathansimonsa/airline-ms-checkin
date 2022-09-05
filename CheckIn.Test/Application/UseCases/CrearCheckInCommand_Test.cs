@@ -18,22 +18,20 @@ namespace CheckIn.Test.Application.UseCases {
 			var detalle = new List<EquipajeDto>() {
 				new EquipajeDto() { Id = Guid.NewGuid(), Descripcion = "maleta #1", Peso = 7, EsFragil = 1 },
 				new EquipajeDto() { Id = Guid.NewGuid(), Descripcion = "maleta #2", Peso = 6, EsFragil = 1 }};
-			var command = new CrearCheckInCommand(altaPrioridad, ticketId, asientoId, administrativoId, detalle);
+			var command = new CreateCheckInCommand(altaPrioridad, ticketId, administrativoId, detalle);
 
-			Assert.Equal(altaPrioridad, command.AltaPrioridad);
+			Assert.Equal(altaPrioridad, command.EsAltaPrioridad);
 			Assert.Equal(ticketId, command.TicketId);
-			Assert.Equal(asientoId, command.AsientoId);
 			Assert.Equal(administrativoId, command.AdministrativoId);
 			Assert.Equal(detalle.Count(), command.Detalle.Count());
 		}
 
 		[Fact]
 		public void Constructor_isPridate() {
-			var command = (CrearCheckInCommand)Activator.CreateInstance(typeof(CrearCheckInCommand), true);
+			var command = (CreateCheckInCommand)Activator.CreateInstance(typeof(CreateCheckInCommand), true);
 
-			Assert.Equal(0, command.AltaPrioridad);
+			Assert.Equal(0, command.EsAltaPrioridad);
 			Assert.Equal(Guid.Empty, command.TicketId);
-			Assert.Equal(Guid.Empty, command.AsientoId);
 			Assert.Equal(Guid.Empty, command.AdministrativoId);
 			Assert.Null(command.Detalle);
 		}

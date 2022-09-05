@@ -14,20 +14,20 @@ namespace CheckIn.Infraestructure.EF.Config.Adm {
 			builder.HasKey(x => x.Id);
 
 			builder.Property(x => x.Ci)
-				.HasMaxLength(50)
-				.HasColumnName("ci");
+				.HasColumnName("ci")
+				.HasMaxLength(50);
 
 			builder.Property(x => x.Nombres)
-				.HasMaxLength(100)
-				.HasColumnName("nombres");
+				.HasColumnName("nombres")
+				.HasMaxLength(100);
 
 			builder.Property(x => x.Apellidos)
-				.HasMaxLength(100)
-				.HasColumnName("apellidos");
+				.HasColumnName("apellidos")
+				.HasMaxLength(100);
 
 			builder.Property(x => x.Cargo)
-				.HasMaxLength(100)
-				.HasColumnName("cargo");
+				.HasColumnName("cargo")
+				.HasMaxLength(100);
 		}
 	}
 }

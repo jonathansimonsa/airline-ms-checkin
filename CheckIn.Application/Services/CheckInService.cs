@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Application.Services {
 	public class CheckInService : ICheckInService {
-		public Task<string> GenerarNroCheckInAsync() => Task.FromResult("QAZ");
+		public Task<string> GenerarNroCheckInAsync() => Task.FromResult("C-");
 	}
 }

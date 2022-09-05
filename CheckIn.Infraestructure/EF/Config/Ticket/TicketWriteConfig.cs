@@ -12,9 +12,14 @@ namespace CheckIn.Infraestructure.EF.Config.Ticket {
 			builder.ToTable("Ticket");
 			builder.HasKey(x => x.Id);
 
+			builder.Property(x => x.NroTicket)
+				.HasColumnName("nroTicket")
+				.HasColumnType("decimal")
+				.HasPrecision(12, 2);
+
 			builder.Property(x => x.HoraReserva)
-				.HasColumnType("datetime")
-				.HasColumnName("horaReserva");
+				.HasColumnName("horaReserva")
+				.HasColumnType("datetime");
 
 		}
 	}

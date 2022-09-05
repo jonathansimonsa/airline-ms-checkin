@@ -11,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Adm {
 	public class GetAllAdmHandler : IRequestHandler<GetAllAdmQuery, List<AdministrativoDto>> {
-		private readonly IAdministrativoRepository _administrativoRepository;
-		private readonly ILogger<GetAllAdmQuery> _logger;
 
-		public GetAllAdmHandler(IAdministrativoRepository administrativoRepository, ILogger<GetAllAdmQuery> logger) {
+		private readonly IAdministrativoRepository _administrativoRepository;
+		private readonly ILogger<GetAllAdmHandler> _logger;
+
+		public GetAllAdmHandler(IAdministrativoRepository administrativoRepository, ILogger<GetAllAdmHandler> logger) {
 			_administrativoRepository = administrativoRepository;
 			_logger = logger;
 		}
@@ -22,7 +23,7 @@ namespace CheckIn.Application.UseCases.Adm {
 		public async Task<List<AdministrativoDto>> Handle(GetAllAdmQuery request, CancellationToken cancellationToken) {
 			List<AdministrativoDto> result = new List<AdministrativoDto>();
 			try {
-				List<Domain.Model.Adm.Administrativo> lista = await _administrativoRepository.GellAll();
+				List<Domain.Model.Adm.Administrativo> lista = await _administrativoRepository.GetAll();
 				foreach (var obj in lista) {
 					AdministrativoDto nuevo = new AdministrativoDto() {
 						Id = obj.Id,
@@ -37,7 +38,7 @@ namespace CheckIn.Application.UseCases.Adm {
 			catch (Exception ex) {
 				_logger.LogError(ex, "Error al obtener Todos los Adms.");
 			}
-			return result;
+			return result.OrderBy(o => o.Apellidos).ToList();
 		}
 	}
 }

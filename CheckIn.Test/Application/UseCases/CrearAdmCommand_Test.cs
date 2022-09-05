@@ -14,7 +14,7 @@ namespace CheckIn.Test.Application.UseCases {
 			var nombres = "Juancho";
 			var apellidos = "Rodriguez";
 			var cargo = "Vendedor";
-			var command = new CrearAdmCommand(ci, nombres, apellidos, cargo);
+			var command = new CreateAdmCommand(ci, nombres, apellidos, cargo);
 
 			Assert.Equal(ci, command.Ci);
 			Assert.Equal(nombres, command.Nombres);
@@ -24,7 +24,7 @@ namespace CheckIn.Test.Application.UseCases {
 
 		[Fact]
 		public void Constructor_isPridate() {
-			var command = (CrearAdmCommand)Activator.CreateInstance(typeof(CrearAdmCommand), true);
+			var command = (CreateAdmCommand)Activator.CreateInstance(typeof(CreateAdmCommand), true);
 
 			Assert.Null(command.Ci);
 			Assert.Null(command.Nombres);

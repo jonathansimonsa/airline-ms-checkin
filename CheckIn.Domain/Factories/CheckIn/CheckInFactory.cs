@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Factories.CheckIn {
 	public class CheckInFactory : ICheckInFactory {
-		public Model.CheckIn.CheckIn Create(string nroCheckIn, int esAltaPrioridad,
-			Guid ticketId, Guid asientoId, Guid administrativoId) {
-			return new Model.CheckIn.CheckIn(nroCheckIn, esAltaPrioridad, ticketId, asientoId, administrativoId);
+		public Model.CheckIn.CheckIn Create(string nroCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento,
+			Guid ticketId, Guid vueloId, Guid administrativoId) {
+			return new Model.CheckIn.CheckIn(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, administrativoId);
 		}
 	}
 }

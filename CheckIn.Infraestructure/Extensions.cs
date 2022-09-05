@@ -29,10 +29,10 @@ namespace CheckIn.Infraestructure {
 			services.AddDbContext<WriteDbContext>(context =>
 			context.UseSqlServer(connectionString));
 
-			services.AddScoped<ICheckInRepository, CheckInRepository>();
-			services.AddScoped<ITicketRepository, TicketRepository>();
-			services.AddScoped<IAsientoRepository, AsientoRepository>();
 			services.AddScoped<IAdministrativoRepository, AdministrativoRepository>();
+			services.AddScoped<IVueloRepository, VueloRepository>();
+			services.AddScoped<ITicketRepository, TicketRepository>();
+			services.AddScoped<ICheckInRepository, CheckInRepository>();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 			return services;

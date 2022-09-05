@@ -14,6 +14,8 @@ namespace CheckIn.Test.Application.Dto {
 			var nroCheckInTest = "QAZ";
 			var horaTest = DateTime.Now;
 			var prioridadTest = 0;
+			var letraAsiento = "P";
+			var NroAsiento = 7;
 			var detalleTest = getDetalleCheckIn();
 			var ticketIdTest = Guid.NewGuid();
 			var asientoIdTest = Guid.NewGuid();
@@ -25,8 +27,9 @@ namespace CheckIn.Test.Application.Dto {
 			Assert.Null(objCheckIn.NroCheckIn);
 			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), objCheckIn.HoraCheckIn);
 			Assert.Equal(0, objCheckIn.EsAltaPrioridad);
+			Assert.Null(objCheckIn.LetraAsiento);
+			Assert.Equal(0, objCheckIn.NroAsiento);
 			Assert.Equal(Guid.Empty, objCheckIn.TicketId);
-			Assert.Equal(Guid.Empty, objCheckIn.AsientoId);
 			Assert.Equal(Guid.Empty, objCheckIn.AdministrativoId);
 			Assert.Empty(objCheckIn.DetalleEquipaje);
 
@@ -34,17 +37,19 @@ namespace CheckIn.Test.Application.Dto {
 			objCheckIn.NroCheckIn = nroCheckInTest;
 			objCheckIn.HoraCheckIn = horaTest;
 			objCheckIn.EsAltaPrioridad = prioridadTest;
+			objCheckIn.LetraAsiento = letraAsiento;
+			objCheckIn.NroAsiento = NroAsiento;
 			objCheckIn.DetalleEquipaje = detalleTest;
 			objCheckIn.TicketId = ticketIdTest;
-			objCheckIn.AsientoId = asientoIdTest;
 			objCheckIn.AdministrativoId = admIdTest;
 
 			Assert.Equal(idTest, objCheckIn.Id);
 			Assert.Equal(nroCheckInTest, objCheckIn.NroCheckIn);
 			Assert.Equal(horaTest, objCheckIn.HoraCheckIn);
 			Assert.Equal(prioridadTest, objCheckIn.EsAltaPrioridad);
+			Assert.Equal(letraAsiento, objCheckIn.LetraAsiento);
+			Assert.Equal(NroAsiento, objCheckIn.NroAsiento);
 			Assert.Equal(ticketIdTest, objCheckIn.TicketId);
-			Assert.Equal(asientoIdTest, objCheckIn.AsientoId);
 			Assert.Equal(admIdTest, objCheckIn.AdministrativoId);
 			Assert.Equal(detalleTest.Count, objCheckIn.DetalleEquipaje.Count);
 		}

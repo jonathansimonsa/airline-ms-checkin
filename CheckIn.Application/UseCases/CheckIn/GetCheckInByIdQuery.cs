@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.CheckIn {
 	public class GetCheckInByIdQuery : IRequest<CheckInDto> {
+
 		public Guid Id { get; set; }
 
 		public GetCheckInByIdQuery(Guid id) {

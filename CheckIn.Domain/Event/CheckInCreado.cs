@@ -10,17 +10,18 @@ namespace CheckIn.Domain.Event {
 		public string NroCheckIn { get; }
 		public DateTime HoraCheckIn { get; }
 		public int EsAltaPrioridad { get; }
+		public string LetraAsiento { get; set; }
+		public int NroAsiento { get; set; }
 		public Guid TicketId { get; }
-		public Guid AsientoId { get; }
 		public Guid AdministrativoId { get; }
 
-		public CheckInCreado(string nroCheckIn, DateTime horaCheckIn, int esAltaPrioridad,
-			Guid ticketId, Guid asientoId, Guid administrativoId) : base(DateTime.Now) {
+		public CheckInCreado(string nroCheckIn, DateTime horaCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento, Guid ticketId, Guid administrativoId) : base(DateTime.Now) {
 			NroCheckIn = nroCheckIn;
 			HoraCheckIn = horaCheckIn;
 			EsAltaPrioridad = esAltaPrioridad;
+			LetraAsiento = letraAsiento;
+			NroAsiento = nroAsiento;
 			TicketId = ticketId;
-			AsientoId = asientoId;
 			AdministrativoId = administrativoId;
 		}
 	}

@@ -1,3 +1,4 @@
+using CheckIn.Domain.Model.CheckIn;
 using CheckIn.Domain.Model.Ticket;
 using CheckIn.Domain.Repositories;
 using CheckIn.Infraestructure.EF.Contexts;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Repository {
 	public class TicketRepository : ITicketRepository {
-		public readonly DbSet<Domain.Model.Ticket.Ticket> _ticket;
+		public readonly DbSet<Ticket> _ticket;
 
 		public TicketRepository(WriteDbContext context) {
 			_ticket = context.Ticket;
@@ -24,12 +25,17 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			return _ticket.SingleAsync(x => x.Id == id);
 		}
 
-		public Task<List<Ticket>> GellAll() {
+		public Task<List<Ticket>> GetAll() {
 			return _ticket.ToListAsync();
 		}
 
 		public Task Updateasync(Ticket obj) {
 			_ticket.Update(obj);
+			return Task.CompletedTask;
+		}
+
+		public Task Deleteasync(Ticket obj) {
+			_ticket.Remove(obj);
 			return Task.CompletedTask;
 		}
 	}
