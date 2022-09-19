@@ -1,6 +1,5 @@
-using CheckIn.Infraestructure.EF.ReadModel.Adm;
 using CheckIn.Infraestructure.EF.ReadModel.CheckIn;
-using CheckIn.Infraestructure.EF.ReadModel.Ticket;
+using CheckIn.Infraestructure.EF.ReadModel.Reserva;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,39 +20,35 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			var letraAsientoTest = "P";
 			var nroAsientoTest = 7;
 			var detalleTest = getDetalleCheckIn();
-			var ticketIdTest = new TicketReadModel();
-			var admIdTest = new AdministrativoReadModel();
+			var reservaIdTest = new ReservaReadModel();
 
 			var obj = new CheckInReadModel();
 
 			Assert.Equal(Guid.Empty, obj.Id);
 			Assert.Null(obj.NroCheckIn);
-			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.HoraCheckIn);
+			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.Hora);
 			Assert.Equal(0, obj.EsAltaPrioridad);
 			Assert.Null(obj.LetraAsiento);
 			Assert.Equal(0, obj.NroAsiento);
-			Assert.Null(obj.Ticket);
-			Assert.Null(obj.Administrativo);
+			Assert.Null(obj.Reserva);
 			Assert.Empty(obj.DetalleEquipaje);
 
 			obj.Id = idTest;
 			obj.NroCheckIn = nroCheckInTest;
-			obj.HoraCheckIn = horaTest;
+			obj.Hora = horaTest;
 			obj.EsAltaPrioridad = prioridadTest;
 			obj.LetraAsiento = letraAsientoTest;
 			obj.NroAsiento = nroAsientoTest;
 			obj.DetalleEquipaje = detalleTest;
-			obj.Ticket = ticketIdTest;
-			obj.Administrativo = admIdTest;
+			obj.Reserva = reservaIdTest;
 
 			Assert.Equal(idTest, obj.Id);
 			Assert.Equal(nroCheckInTest, obj.NroCheckIn);
-			Assert.Equal(horaTest, obj.HoraCheckIn);
+			Assert.Equal(horaTest, obj.Hora);
 			Assert.Equal(prioridadTest, obj.EsAltaPrioridad);
 			Assert.Equal(letraAsientoTest, obj.LetraAsiento);
 			Assert.Equal(nroAsientoTest, obj.NroAsiento);
-			Assert.Equal(ticketIdTest, obj.Ticket);
-			Assert.Equal(admIdTest, obj.Administrativo);
+			Assert.Equal(reservaIdTest, obj.Reserva);
 			Assert.Equal(detalleTest.Count, obj.DetalleEquipaje.Count);
 		}
 

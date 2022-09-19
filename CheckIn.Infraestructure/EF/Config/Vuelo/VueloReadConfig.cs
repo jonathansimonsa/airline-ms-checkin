@@ -25,14 +25,6 @@ namespace CheckIn.Infraestructure.EF.Config.Vuelo {
 			builder.Property(x => x.Destino)
 				.HasColumnName("destino")
 				.HasMaxLength(100);
-
-			builder.Property(x => x.Partida)
-				.HasColumnName("partida")
-				.HasColumnType("datetime");
-
-			builder.Property(x => x.Llegada)
-				.HasColumnName("llegada")
-				.HasColumnType("datetime");
 		}
 	}
 }

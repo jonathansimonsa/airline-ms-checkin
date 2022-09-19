@@ -1,0 +1,8 @@
+Servicio			Repositorio	Responsable
+Registro de tripulación		https://gitlab.com/grupo5-bo/tripulacion	Johan Vera
+Registro de Aeronaves		https://github.com/gabriel-chavez/AeronaveNur	Gabriel Chavez
+Registro de Vuelos		https://gitlab.com/grupo5-bo/ms-vuelos		Oscar Azcarraga
+Vent de Tickets			https://gitlab.com/jcspz0/ms-reserva		Juan Carlos Suarez
+Reservas a traves de mensajería 
+(ms-reserva, ms-pago)		https://gitlab.com/jcspz0/ms-pago	
+Check In			https://github.com/jonathansimonsa/airline-ms-checkin.git	Jonathan Simons

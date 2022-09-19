@@ -17,40 +17,36 @@ namespace CheckIn.Test.Application.Dto {
 			var letraAsiento = "P";
 			var NroAsiento = 7;
 			var detalleTest = getDetalleCheckIn();
-			var ticketIdTest = Guid.NewGuid();
+			var reservaIdTest = Guid.NewGuid();
 			var asientoIdTest = Guid.NewGuid();
-			var admIdTest = Guid.NewGuid();
 
 			var objCheckIn = new CheckInDto();
 
 			Assert.Equal(Guid.Empty, objCheckIn.Id);
 			Assert.Null(objCheckIn.NroCheckIn);
-			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), objCheckIn.HoraCheckIn);
+			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), objCheckIn.Hora);
 			Assert.Equal(0, objCheckIn.EsAltaPrioridad);
 			Assert.Null(objCheckIn.LetraAsiento);
 			Assert.Equal(0, objCheckIn.NroAsiento);
-			Assert.Equal(Guid.Empty, objCheckIn.TicketId);
-			Assert.Equal(Guid.Empty, objCheckIn.AdministrativoId);
+			Assert.Equal(Guid.Empty, objCheckIn.ReservaId);
 			Assert.Empty(objCheckIn.DetalleEquipaje);
 
 			objCheckIn.Id = idTest;
 			objCheckIn.NroCheckIn = nroCheckInTest;
-			objCheckIn.HoraCheckIn = horaTest;
+			objCheckIn.Hora = horaTest;
 			objCheckIn.EsAltaPrioridad = prioridadTest;
 			objCheckIn.LetraAsiento = letraAsiento;
 			objCheckIn.NroAsiento = NroAsiento;
 			objCheckIn.DetalleEquipaje = detalleTest;
-			objCheckIn.TicketId = ticketIdTest;
-			objCheckIn.AdministrativoId = admIdTest;
+			objCheckIn.ReservaId = reservaIdTest;
 
 			Assert.Equal(idTest, objCheckIn.Id);
 			Assert.Equal(nroCheckInTest, objCheckIn.NroCheckIn);
-			Assert.Equal(horaTest, objCheckIn.HoraCheckIn);
+			Assert.Equal(horaTest, objCheckIn.Hora);
 			Assert.Equal(prioridadTest, objCheckIn.EsAltaPrioridad);
 			Assert.Equal(letraAsiento, objCheckIn.LetraAsiento);
 			Assert.Equal(NroAsiento, objCheckIn.NroAsiento);
-			Assert.Equal(ticketIdTest, objCheckIn.TicketId);
-			Assert.Equal(admIdTest, objCheckIn.AdministrativoId);
+			Assert.Equal(reservaIdTest, objCheckIn.ReservaId);
 			Assert.Equal(detalleTest.Count, objCheckIn.DetalleEquipaje.Count);
 		}
 

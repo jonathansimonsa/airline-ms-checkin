@@ -1,6 +1,5 @@
 using CheckIn.Application.Dto.CheckIn;
 using CheckIn.Application.UseCases.CheckIn;
-using CheckIn.Application.UseCases.Ticket;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +28,9 @@ namespace CheckIn.WebApi.Controllers {
 
 		[Route("{id:guid}")]
 		[HttpGet]
-		public async Task<IActionResult> GetById([FromRoute] GetCheckInByIdQuery command) {
-			CheckInDto result = await _mediator.Send(command);
-
+		public async Task<IActionResult> GetById(Guid id) {
+			GetCheckInByIdQuery query = new GetCheckInByIdQuery(id);
+			CheckInDto result = await _mediator.Send(query);
 			if (result == null)
 				return NotFound();
 

@@ -13,12 +13,11 @@ namespace CheckIn.Test.Domain.Model {
 
 			Assert.Equal(Guid.Empty, obj.Id);
 			Assert.Null(obj.NroCheckIn);
-			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.HoraCheckIn);
+			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.Hora);
 			Assert.Equal(0, obj.EsAltaPrioridad);
 			Assert.Null(obj.LetraAsiento);
 			Assert.Equal(0, obj.NroAsiento);
-			Assert.Equal(Guid.Empty, obj.TicketId);
-			Assert.Equal(Guid.Empty, obj.AdministrativoId);
+			Assert.Equal(Guid.Empty, obj.ReservaId);
 			Assert.Equal(0, obj.DetalleEquipaje.Count);
 
 			obj.ClearDomainEvents();

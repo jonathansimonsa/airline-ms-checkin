@@ -15,7 +15,7 @@ namespace CheckIn.Domain.Repositories {
 
 		Task<List<Model.CheckIn.CheckIn>> GetByVueloAndPrioridad(Guid vueloId, int esAltaPrioridad);
 
-		Task<List<Model.CheckIn.CheckIn>> GetByTicketId(Guid ticketId);
+		Task<List<Model.CheckIn.CheckIn>> GetByReservaId(Guid reservaId);
 
 	}
 }

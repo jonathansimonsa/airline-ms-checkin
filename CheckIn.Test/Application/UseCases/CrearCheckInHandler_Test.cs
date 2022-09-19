@@ -21,14 +21,13 @@ namespace CheckIn.Test.Application.UseCases {
 		private readonly Mock<ICheckInService> checkInService;
 		private readonly Mock<ICheckInFactory> checkInFactory;
 		private readonly Mock<IUnitOfWork> unitOfWork;
-		private readonly Mock<ITicketRepository> ticketRepository;
+		private readonly Mock<IReservaRepository> reservaRepository;
 		private string nroCheckIn = "QAZ";
 		private int esAltaPrioridad = 1;
 		private string letraAsiento = "P";
 		private int nroAsiento = 7;
-		private Guid ticketId = Guid.NewGuid();
+		private Guid reservaId = Guid.NewGuid();
 		private Guid vueloId = Guid.NewGuid();
-		private Guid checkInId = Guid.NewGuid();
 		private List<EquipajeDto> detalle = new List<EquipajeDto>() {
 				new EquipajeDto() { Id = Guid.NewGuid(), Descripcion = "maleta #1", Peso = 7, EsFragil = 1 },
 				new EquipajeDto() { Id = Guid.NewGuid(), Descripcion = "maleta #2", Peso = 6, EsFragil = 1 }};
@@ -40,14 +39,14 @@ namespace CheckIn.Test.Application.UseCases {
 			checkInService = new Mock<ICheckInService>();
 			checkInFactory = new Mock<ICheckInFactory>();
 			unitOfWork = new Mock<IUnitOfWork>();
-			CheckIn_Test = new CheckInFactory().Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, checkInId);
-			ticketRepository = new Mock<ITicketRepository>();
+			CheckIn_Test = new CheckInFactory().Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, reservaId, vueloId);
+			reservaRepository = new Mock<IReservaRepository>();
 		}
 
 		[Fact]
 		public void CrearCheckInHandler_HandlerCorrectly() {
 			checkInService.Setup(checkInService => checkInService.GenerarNroCheckInAsync()).Returns(Task.FromResult(nroCheckIn));
-			checkInFactory.Setup(factory => factory.Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, checkInId)).Returns(CheckIn_Test);
+			checkInFactory.Setup(factory => factory.Create(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, reservaId, vueloId)).Returns(CheckIn_Test);
 
 			var objHandler = new CreateCheckInHandler(
 				checkInRepository.Object,
@@ -55,8 +54,8 @@ namespace CheckIn.Test.Application.UseCases {
 				checkInService.Object,
 				checkInFactory.Object,
 				unitOfWork.Object,
-				ticketRepository.Object);
-			var objRequest = new CreateCheckInCommand(esAltaPrioridad, ticketId, checkInId, detalle);
+				reservaRepository.Object);
+			var objRequest = new CreateCheckInCommand(esAltaPrioridad, reservaId, detalle);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);
@@ -72,9 +71,9 @@ namespace CheckIn.Test.Application.UseCases {
 				checkInService.Object,
 				checkInFactory.Object,
 				unitOfWork.Object,
-				ticketRepository.Object);
+				reservaRepository.Object);
 
-			var objRequest = new CreateCheckInCommand(esAltaPrioridad, ticketId, checkInId, detalle);
+			var objRequest = new CreateCheckInCommand(esAltaPrioridad, reservaId, detalle);
 
 			var tcs = new CancellationTokenSource(1000);
 			var result = objHandler.Handle(objRequest, tcs.Token);

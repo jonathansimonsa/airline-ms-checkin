@@ -6,9 +6,28 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Factories.CheckIn {
 	public class CheckInFactory : ICheckInFactory {
-		public Model.CheckIn.CheckIn Create(string nroCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento,
-			Guid ticketId, Guid vueloId, Guid administrativoId) {
-			return new Model.CheckIn.CheckIn(nroCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, vueloId, administrativoId);
+		public Model.CheckIn.CheckIn Create(string nroCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento, Guid reservaId, Guid vueloId) {
+
+			var obj = new Model.CheckIn.CheckIn(
+				nroCheckIn,
+				DateTime.Now,
+				esAltaPrioridad,
+				letraAsiento,
+				nroAsiento,
+				reservaId,
+				vueloId);
+			var objEvent = new Event.CheckInCreado(
+				nroCheckIn,
+				DateTime.Now,
+				esAltaPrioridad,
+				letraAsiento,
+				nroAsiento,
+				reservaId,
+				vueloId);
+
+			obj.AddDomainEvent(objEvent);
+
+			return obj;
 		}
 	}
 }

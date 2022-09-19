@@ -1,4 +1,4 @@
-using CheckIn.Application.Dto.Ticket;
+using CheckIn.Application.Dto.Reserva;
 using CheckIn.Application.Dto.Vuelo;
 using MediatR;
 using System;
