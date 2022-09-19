@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Factories.Vuelo {
 	public interface IVueloFactory {
-		Model.Vuelo.Vuelo Create(int nroVuelo, string origen, string destino, DateTime partida, DateTime llegada);
+		Model.Vuelo.Vuelo Create(Guid Id, int nroVuelo, string origen, string destino);
 
 	}
 }

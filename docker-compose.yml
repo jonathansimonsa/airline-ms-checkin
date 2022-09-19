@@ -1,16 +1,12 @@
 services:
-  ms-checkin:
-    image: ms-checkin
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
     ports:
-      - "3000:80"
-    build:      
-      context: .
-      dockerfile: Dockerfile
-    #environment:   
-    #  ConnectionStrings:AeropuertoDbConnectionString: "Server=localhost,14333;Database=AeropuertoDb;User Id=sa;Password=Diplomado."
-    depends_on:
-      - mssql 
-  #  #command: ["dotnet", "ef", "database update"]
+      - "5672:5672"
+      - "15672:15672"
+    # networks:
+    #   - aforo255
   mssql:
     image: "mcr.microsoft.com/mssql/server:2017-latest"  
     ports:
@@ -18,8 +14,19 @@ services:
     environment:
       MSSQL_SA_PASSWORD: "Diplomado."
       ACCEPT_EULA: "Y"
+      MSSQL_PID: Express
     volumes:
       - 'mssql-server-data:/var/mssql/data'
-  
+  ms-checkin:
+    image: ms-checkin
+    ports:
+      - "8080:80"
+    build:      
+      context: .
+      dockerfile: Dockerfile
+    environment:   
+      ConnectionStrings:AeropuertoDbConnectionString: "Server=mssql;Database=AeropuertoDb;User=sa;Password=Diplomado.;"
+    depends_on:
+      - mssql  
 volumes:
   mssql-server-data:

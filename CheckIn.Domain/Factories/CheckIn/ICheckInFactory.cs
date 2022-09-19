@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace CheckIn.Domain.Factories.CheckIn {
 	public interface ICheckInFactory {
 		Model.CheckIn.CheckIn Create(string nroCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento,
-			Guid ticketId, Guid vueloId, Guid administrativoId);
+			Guid reservaId, Guid vueloId);
 	}
 }

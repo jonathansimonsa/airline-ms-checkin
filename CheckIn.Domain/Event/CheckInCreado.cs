@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 namespace CheckIn.Domain.Event {
 	public record CheckInCreado : DomainEvent {
 		public string NroCheckIn { get; }
-		public DateTime HoraCheckIn { get; }
+		public DateTime Hora { get; }
 		public int EsAltaPrioridad { get; }
 		public string LetraAsiento { get; set; }
 		public int NroAsiento { get; set; }
-		public Guid TicketId { get; }
-		public Guid AdministrativoId { get; }
+		public Guid ReservaId { get; }
+		public Guid VueloId { get; }
 
-		public CheckInCreado(string nroCheckIn, DateTime horaCheckIn, int esAltaPrioridad, string letraAsiento, int nroAsiento, Guid ticketId, Guid administrativoId) : base(DateTime.Now) {
+		public CheckInCreado(string nroCheckIn, DateTime hora, int esAltaPrioridad, string letraAsiento, int nroAsiento, Guid reservaId, Guid vueloId) : base(hora) {
 			NroCheckIn = nroCheckIn;
-			HoraCheckIn = horaCheckIn;
+			Hora = hora;
 			EsAltaPrioridad = esAltaPrioridad;
 			LetraAsiento = letraAsiento;
 			NroAsiento = nroAsiento;
-			TicketId = ticketId;
-			AdministrativoId = administrativoId;
+			ReservaId = reservaId;
+			VueloId = vueloId;
 		}
 	}
 }

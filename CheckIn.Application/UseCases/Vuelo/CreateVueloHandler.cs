@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Vuelo {
-	public class CreateVueloHandler : IRequestHandler<CreateVueloComand, Guid> {
+	public class CreateVueloHandler : IRequestHandler<CreateVueloCommand, Guid> {
 		private readonly IVueloRepository _vueloRepository;
 		private readonly ILogger<CreateVueloHandler> _logger;
 		private readonly IVueloFactory _vueloFactory;
@@ -27,16 +27,16 @@ namespace CheckIn.Application.UseCases.Vuelo {
 			_unitOfWork = unitOfWork;
 		}
 
-		public async Task<Guid> Handle(CreateVueloComand request, CancellationToken cancellationToken) {
+		public async Task<Guid> Handle(CreateVueloCommand request, CancellationToken cancellationToken) {
 			try {
 				List<Domain.Model.Vuelo.Vuelo> lista = await _vueloRepository.GetAll();
 				int newId = lista.Count + 1;
 
-				Domain.Model.Vuelo.Vuelo objNuevo = _vueloFactory.Create(newId,
+				Domain.Model.Vuelo.Vuelo objNuevo = _vueloFactory.Create(
+					request.Id,
+					newId,
 					request.Origen,
-					request.Destino,
-					request.Partida,
-					request.Llegada);
+					request.Destino);
 
 				await _vueloRepository.CreateAsync(objNuevo);
 				await _unitOfWork.Commit();

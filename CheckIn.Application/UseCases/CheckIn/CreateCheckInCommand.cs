@@ -9,16 +9,14 @@ namespace CheckIn.Application.UseCases.CheckIn {
 	public class CreateCheckInCommand : IRequest<Guid> {
 
 		public int EsAltaPrioridad { get; set; }
-		public Guid TicketId { get; set; }
-		public Guid AdministrativoId { get; set; }
+		public Guid ReservaId { get; set; }
 		public List<Dto.CheckIn.EquipajeDto> Detalle { get; set; }
 
 		private CreateCheckInCommand() { }
 
-		public CreateCheckInCommand(int esAltaPrioridad, Guid ticketId, Guid administrativoId, List<Dto.CheckIn.EquipajeDto> detalle) {
+		public CreateCheckInCommand(int esAltaPrioridad, Guid reservaId, List<Dto.CheckIn.EquipajeDto> detalle) {
 			EsAltaPrioridad = esAltaPrioridad;
-			TicketId = ticketId;
-			AdministrativoId = administrativoId;
+			ReservaId = reservaId;
 			Detalle = detalle;
 		}
 

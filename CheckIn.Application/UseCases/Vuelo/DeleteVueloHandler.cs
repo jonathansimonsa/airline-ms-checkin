@@ -1,5 +1,3 @@
-using CheckIn.Application.UseCases.Ticket;
-using CheckIn.Domain.Factories.Ticket;
 using CheckIn.Domain.Factories.Vuelo;
 using CheckIn.Domain.Repositories;
 using MediatR;

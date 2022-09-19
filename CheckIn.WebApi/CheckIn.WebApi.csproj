@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CheckIn.Application\CheckIn.Application.csproj" />
     <ProjectReference Include="..\CheckIn.Infraestructure\CheckIn.Infraestructure.csproj" />
   </ItemGroup>
 

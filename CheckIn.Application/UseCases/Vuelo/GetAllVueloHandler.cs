@@ -28,9 +28,7 @@ namespace CheckIn.Application.UseCases.Vuelo {
 						Id = obj.Id,
 						NroVuelo = obj.NroVuelo,
 						Origen = obj.Origen,
-						Destino = obj.Destino,
-						Partida = obj.Partida,
-						Llegada = obj.Llegada,
+						Destino = obj.Destino
 					};
 					result.Add(nuevo);
 				}

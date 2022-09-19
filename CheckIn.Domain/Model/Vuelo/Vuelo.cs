@@ -10,18 +10,14 @@ namespace CheckIn.Domain.Model.Vuelo {
 		public int NroVuelo { get; private set; }
 		public string Origen { get; private set; }
 		public string Destino { get; private set; }
-		public DateTime Partida { get; private set; }
-		public DateTime Llegada { get; private set; }
 
 		public Vuelo() { }
 
-		public Vuelo(int nroVuelo, string origen, string destino, DateTime partida, DateTime llegada) {
-			Id = Guid.NewGuid();
+		public Vuelo(Guid id, int nroVuelo, string origen, string destino) {
+			Id = id;
 			NroVuelo = nroVuelo;
 			Origen = origen;
 			Destino = destino;
-			Partida = partida;
-			Llegada = llegada;
 		}
 	}
 }

@@ -17,8 +17,8 @@ namespace CheckIn.Infraestructure.EF.Config.CheckIn {
 				.HasColumnName("nroCheckIn")
 				.HasMaxLength(10);
 
-			builder.Property(x => x.HoraCheckIn)
-				.HasColumnName("horaCheckIn")
+			builder.Property(x => x.Hora)
+				.HasColumnName("hora")
 				.HasColumnType("datetime");
 
 			builder.Property(x => x.EsAltaPrioridad)

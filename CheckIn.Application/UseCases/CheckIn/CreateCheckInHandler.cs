@@ -20,25 +20,25 @@ namespace CheckIn.Application.UseCases.CheckIn {
 		private readonly ICheckInFactory _checkInFactory;
 		private readonly IUnitOfWork _unitOfWork;
 
-		private readonly ITicketRepository _ticketRepository;
+		private readonly IReservaRepository _reservaRepository;
 
 		public CreateCheckInHandler(ICheckInRepository checkInRepository,
 			ILogger<CreateCheckInHandler> logger,
 			ICheckInService checkInService,
 			ICheckInFactory checkInFactory,
 			IUnitOfWork unitOfWork,
-			ITicketRepository ticketRepository) {
+			IReservaRepository reservaRepository) {
 			_checkInRepository = checkInRepository;
 			_logger = logger;
 			_checkInService = checkInService;
 			_checkInFactory = checkInFactory;
 			_unitOfWork = unitOfWork;
-			_ticketRepository = ticketRepository;
+			_reservaRepository = reservaRepository;
 		}
 
 		public async Task<Guid> Handle(CreateCheckInCommand request, CancellationToken cancellationToken) {
 			try {
-				var checkTicket_lista = await _checkInRepository.GetByTicketId(request.TicketId);
+				var checkTicket_lista = await _checkInRepository.GetByReservaId(request.ReservaId);
 				if (checkTicket_lista.Any()) throw new Exception("Ya existe un check in registrado con este Ticket.");
 
 
@@ -47,7 +47,7 @@ namespace CheckIn.Application.UseCases.CheckIn {
 
 				string nro = await _checkInService.GenerarNroCheckInAsync();
 
-				Domain.Model.Ticket.Ticket ticket_obj = await _ticketRepository.FindByIdAsync(request.TicketId);
+				Domain.Model.Reserva.Reserva ticket_obj = await _reservaRepository.FindByIdAsync(request.ReservaId);
 				if (ticket_obj == null) throw new Exception("Ticket no encontrado.");
 				var vueloId = ticket_obj.VueloId;
 
@@ -61,9 +61,8 @@ namespace CheckIn.Application.UseCases.CheckIn {
 					request.EsAltaPrioridad,
 					request.EsAltaPrioridad == 1 ? "P" : "N",
 					nroAsiento,
-					request.TicketId,
-					vueloId,
-					request.AdministrativoId);
+					request.ReservaId,
+					vueloId);
 
 				foreach (var item in request.Detalle) {
 					objCheckIn.AgregarEquipaje(item.Descripcion, new PesoValue(item.Peso), item.EsFragil);

@@ -15,18 +15,18 @@ namespace CheckIn.Test.Domain.Event {
 			var esAltaPrioridad = 1;
 			var letraAsiento = "P";
 			var nroAsiento = 7;
-			var ticketId = Guid.NewGuid();
-			var administrativoId = Guid.NewGuid();
+			var reservaId = Guid.NewGuid();
+			var vueloId = Guid.NewGuid();
 
-			var obj = new CheckInCreado(nroCheckIn, horaCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, ticketId, administrativoId);
+			var obj = new CheckInCreado(nroCheckIn, horaCheckIn, esAltaPrioridad, letraAsiento, nroAsiento, reservaId, vueloId);
 
 			Assert.Equal(nroCheckIn, obj.NroCheckIn);
-			Assert.Equal(horaCheckIn, obj.HoraCheckIn);
+			Assert.Equal(horaCheckIn, obj.Hora);
 			Assert.Equal(esAltaPrioridad, obj.EsAltaPrioridad);
 			Assert.Equal(letraAsiento, obj.LetraAsiento);
 			Assert.Equal(nroAsiento, obj.NroAsiento);
-			Assert.Equal(ticketId, obj.TicketId);
-			Assert.Equal(administrativoId, obj.AdministrativoId);
+			Assert.Equal(reservaId, obj.ReservaId);
+			Assert.Equal(vueloId, obj.VueloId);
 
 			Assert.NotEqual(Guid.Empty, obj.Id);
 			Assert.NotEqual(1, obj.OccuredOn.Year);
