@@ -29,9 +29,6 @@ namespace CheckIn.Application.UseCases.Consumers {
 		public async Task Consume(ConsumeContext<ReservaCreado> context) {
 			ReservaCreado @event = context.Message;
 			try {
-				throw new Exception();
-
-
 				GetVueloByIdQuery query_V = new GetVueloByIdQuery(new Guid(@event.vueloId));
 				VueloDto result_V = await _mediator.Send(query_V);
 
