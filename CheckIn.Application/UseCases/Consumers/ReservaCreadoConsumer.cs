@@ -36,8 +36,8 @@ namespace CheckIn.Application.UseCases.Consumers {
 					//	CREAR VUELO SINO EXISTE
 					CreateVueloCommand command_Vuelo = new CreateVueloCommand(new Guid(@event.vueloId), @event.origen, @event.destino);
 					Guid result_vueloId = await _mediator.Send(command_Vuelo);
-					if (result_vueloId.Equals(Guid.Empty))
-						throw new Exception();
+
+					if (result_vueloId.Equals(Guid.Empty)) throw new Exception();
 				}
 
 				GetReservaByIdQuery query_R = new GetReservaByIdQuery(new Guid(@event.reservaId));
@@ -52,8 +52,8 @@ namespace CheckIn.Application.UseCases.Consumers {
 						new Guid(@event.pagoId));
 					Guid result_ReservaId = await _mediator.Send(command_Reserva);
 
-					if (result_ReservaId.Equals(Guid.Empty))
-						throw new Exception();
+					if (result_ReservaId.Equals(Guid.Empty)) throw new Exception();
+
 				}
 			}
 			catch (Exception ex) {
