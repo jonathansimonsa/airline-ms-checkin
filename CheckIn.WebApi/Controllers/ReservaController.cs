@@ -1,5 +1,7 @@
 using CheckIn.Application.Dto.Reserva;
+using CheckIn.Application.Dto.Vuelo;
 using CheckIn.Application.UseCases.Reserva;
+using CheckIn.Application.UseCases.Vuelo;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +23,17 @@ namespace CheckIn.WebApi.Controllers {
 		[HttpGet]
 		public async Task<IActionResult> GetAll([FromRoute] GetAllReservaQuery command) {
 			List<ReservaDto> result = await _mediator.Send(command);
+			if (result == null)
+				return NotFound();
+
+			return Ok(result);
+		}
+
+		[Route("{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> GetById(Guid id) {
+			GetReservaByIdQuery query = new GetReservaByIdQuery(id);
+			ReservaDto result = await _mediator.Send(query);
 			if (result == null)
 				return NotFound();
 
