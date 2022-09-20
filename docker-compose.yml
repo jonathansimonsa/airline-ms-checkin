@@ -20,7 +20,7 @@ services:
   ms-checkin:
     image: ms-checkin
     ports:
-      - "8080:80"
+      - "8090:80"
     build:      
       context: .
       dockerfile: Dockerfile
