@@ -27,10 +27,11 @@ namespace CheckIn.WebApi {
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
-			services.AddAplication();
+
 			services.AddInfraestructure(Configuration);
 
 			services.AddControllers();
+
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "CheckIn.WebApi", Version = "v1" });
 			});

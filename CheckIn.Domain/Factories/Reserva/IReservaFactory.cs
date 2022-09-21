@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Factories.Reserva {
 	public interface IReservaFactory {
-		Model.Reserva.Reserva Create(Guid id, int nroTicket, DateTime hora, Guid vueloId);
+		Model.Reserva.Reserva Create(Guid id, int nroReserva, DateTime hora, Guid vueloId);
 	}
 }
