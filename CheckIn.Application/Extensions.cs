@@ -18,10 +18,10 @@ namespace CheckIn.Application {
 
 			services.AddMediatR(Assembly.GetExecutingAssembly());
 
-			services.AddSingleton<IVueloFactory, VueloFactory>();
-			services.AddSingleton<IReservaFactory, ReservaFactory>();
-			services.AddTransient<ICheckInService, CheckInService>();
-			services.AddTransient<ICheckInFactory, CheckInFactory>();
+			services.AddTransient<IVueloFactory, VueloFactory>();
+			services.AddTransient<IReservaFactory, ReservaFactory>();
+			services.AddSingleton<ICheckInService, CheckInService>();
+			services.AddSingleton<ICheckInFactory, CheckInFactory>();
 
 			return services;
 		}

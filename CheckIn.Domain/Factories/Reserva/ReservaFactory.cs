@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Domain.Factories.Reserva {
 	public class ReservaFactory : IReservaFactory {
-		public Model.Reserva.Reserva Create(Guid id, int nroTicket, DateTime hora, Guid vueloId) {
-			return new Model.Reserva.Reserva(id, nroTicket, hora, vueloId);
+		public Model.Reserva.Reserva Create(Guid id, int nroReserva, DateTime hora, Guid vueloId) {
+			return new Model.Reserva.Reserva(id, nroReserva, hora, vueloId);
 		}
 	}
 }

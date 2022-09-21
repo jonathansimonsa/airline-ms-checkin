@@ -14,16 +14,16 @@ namespace CheckIn.Application.UseCases.Reserva {
 	public class CreateReservaHandler : IRequestHandler<CreateReservaCommand, Guid> {
 		private readonly IReservaRepository _ticketRepository;
 		private readonly ILogger<CreateReservaHandler> _logger;
-		private readonly IReservaFactory _ticketFactory;
+		private readonly IReservaFactory _reservaFactory;
 		private readonly IUnitOfWork _unitOfWork;
 
-		public CreateReservaHandler(IReservaRepository ticketRepository,
+		public CreateReservaHandler(IReservaRepository reservaRepository,
 			ILogger<CreateReservaHandler> logger,
-			IReservaFactory ticketFactory,
+			IReservaFactory reservaFactory,
 			IUnitOfWork unitOfWork) {
-			_ticketRepository = ticketRepository;
+			_ticketRepository = reservaRepository;
 			_logger = logger;
-			_ticketFactory = ticketFactory;
+			_reservaFactory = reservaFactory;
 			_unitOfWork = unitOfWork;
 		}
 
@@ -32,7 +32,7 @@ namespace CheckIn.Application.UseCases.Reserva {
 				List<Domain.Model.Reserva.Reserva> lista = await _ticketRepository.GetAll();
 				int newId = lista.Count + 1;
 
-				Domain.Model.Reserva.Reserva objNuevo = _ticketFactory.Create(
+				Domain.Model.Reserva.Reserva objNuevo = _reservaFactory.Create(
 					request.Id,
 					newId,
 					request.Hora,

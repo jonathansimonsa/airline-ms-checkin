@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pedidos.Domain.Repositories;
+using ShareKernel.IntegrationEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +52,8 @@ namespace CheckIn.Infraestructure {
 			services.AddMassTransit(config => {
 
 				config.AddConsumer<ReservaCreadoConsumer>().Endpoint(endpoint => endpoint.Name = ReservaCreadoConsumer.QueueName);
+				//config.AddConsumer<CheckInCreadoConsumer>().Endpoint(endpoint => endpoint.Name = CheckInCreadoConsumer.QueueName);
+				//config.AddConsumer<IntegrationReservaConfirmadaRollbackConsumer>().Endpoint(endpoint => endpoint.Name = IntegrationReservaConfirmadaRollbackConsumer.QueueName);
 
 				config.UsingRabbitMq((context, cfg) => {
 					var uri = string.Format("amqp://{0}:{1}@{2}:{3}", rabbitMqUserName, rabbitMqPassword, rabbitMqHost, rabbitMqPort);
@@ -59,6 +62,12 @@ namespace CheckIn.Infraestructure {
 					cfg.ReceiveEndpoint(ReservaCreadoConsumer.QueueName, endpoint => {
 						endpoint.ConfigureConsumer<ReservaCreadoConsumer>(context);
 					});
+					//cfg.ReceiveEndpoint(CheckInCreadoConsumer.QueueName, endpoint => {
+					//	endpoint.ConfigureConsumer<CheckInCreadoConsumer>(context);
+					//});
+					//cfg.ReceiveEndpoint(IntegrationReservaConfirmadaRollbackConsumer.QueueName, endpoint => {
+					//	endpoint.ConfigureConsumer<IntegrationReservaConfirmadaRollbackConsumer>(context);
+					//});
 				});
 			});
 		}

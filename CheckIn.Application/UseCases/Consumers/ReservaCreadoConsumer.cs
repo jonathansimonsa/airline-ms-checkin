@@ -57,10 +57,7 @@ namespace CheckIn.Application.UseCases.Consumers {
 				}
 			}
 			catch (Exception ex) {
-				IntegrationReservaConfirmadaRollback evento = new IntegrationReservaConfirmadaRollback() {
-					reservaId = @event.reservaId,
-					pagoId = @event.pagoId,
-				};
+				IntegrationReservaConfirmadaRollback evento = new IntegrationReservaConfirmadaRollback(@event.reservaId, @event.pagoId);
 				await _publishEndpoint.Publish(evento);
 			}
 
