@@ -5,6 +5,7 @@ using CheckIn.Application.UseCases.Vuelo;
 using MassTransit;
 using MassTransit.Transports;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using ShareKernel.IntegrationEvents;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Consumers {
-	public class ReservaCreadoConsumer : IConsumer<ReservaCreado> {
+	public class ReservaConfirmadaCreadoConsumer : IConsumer<ReservaCreado> {
 
 		private readonly IMediator _mediator;
 		public const string ExchangeName = "reserva.reservaconfirmada.exchange";
@@ -21,7 +22,7 @@ namespace CheckIn.Application.UseCases.Consumers {
 
 		private readonly IPublishEndpoint _publishEndpoint;
 
-		public ReservaCreadoConsumer(IMediator mediator, IPublishEndpoint publishEndpoint) {
+		public ReservaConfirmadaCreadoConsumer(IMediator mediator, IPublishEndpoint publishEndpoint) {
 			_mediator = mediator;
 			_publishEndpoint = publishEndpoint;
 		}
@@ -54,9 +55,13 @@ namespace CheckIn.Application.UseCases.Consumers {
 
 					if (result_ReservaId.Equals(Guid.Empty)) throw new Exception();
 
+					query_R = new GetReservaByIdQuery(result_ReservaId);
+					result_R = await _mediator.Send(query_R);
 				}
+
+				await _publishEndpoint.Publish(result_R);
 			}
-			catch (Exception ex) {
+			catch (Exception) {
 				IntegrationReservaConfirmadaRollback evento = new IntegrationReservaConfirmadaRollback(@event.reservaId, @event.pagoId);
 				await _publishEndpoint.Publish(evento);
 			}
