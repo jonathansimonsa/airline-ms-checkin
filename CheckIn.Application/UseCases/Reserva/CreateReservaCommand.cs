@@ -10,15 +10,13 @@ namespace CheckIn.Application.UseCases.Reserva {
 		public Guid Id { get; set; }
 		public DateTime Hora { get; set; }
 		public Guid VueloId { get; set; }
-		public Guid PagoId { get; set; }
 
 		private CreateReservaCommand() { }
 
-		public CreateReservaCommand(Guid id, DateTime hora, Guid vueloId, Guid pagoId) {
+		public CreateReservaCommand(Guid id, DateTime hora, Guid vueloId) {
 			Id = id;
 			Hora = hora;
 			VueloId = vueloId;
-			PagoId = pagoId;
 		}
 	}
 }

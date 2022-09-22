@@ -49,8 +49,7 @@ namespace CheckIn.Application.UseCases.Consumers {
 					CreateReservaCommand command_Reserva = new CreateReservaCommand(
 						new Guid(@event.reservaId),
 						DateTime.Parse(@event.hora),
-						new Guid(@event.vueloId),
-						new Guid(@event.pagoId));
+						new Guid(@event.vueloId));
 					Guid result_ReservaId = await _mediator.Send(command_Reserva);
 
 					if (result_ReservaId.Equals(Guid.Empty)) throw new Exception();
