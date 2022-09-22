@@ -1,5 +1,4 @@
-using CheckIn.Domain.Model.Adm;
-using CheckIn.Domain.Model.Ticket;
+using CheckIn.Domain.Model.Reserva;
 using CheckIn.Domain.Model.Vuelo;
 using CheckIn.Domain.Repositories;
 using CheckIn.Infraestructure.EF.Contexts;
@@ -44,8 +43,8 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			return _checkIn.Where(p => p.VueloId == vueloId && p.EsAltaPrioridad == esAltaPrioridad).ToListAsync();
 		}
 
-		public Task<List<Domain.Model.CheckIn.CheckIn>> GetByTicketId(Guid ticketId) {
-			return _checkIn.Where(p => p.TicketId == ticketId).ToListAsync();
+		public Task<List<Domain.Model.CheckIn.CheckIn>> GetByReservaId(Guid reservaId) {
+			return _checkIn.Where(p => p.ReservaId == reservaId).ToListAsync();
 		}
 	}
 }

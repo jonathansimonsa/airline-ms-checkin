@@ -1,4 +1,4 @@
-using CheckIn.Infraestructure.EF.ReadModel.Ticket;
+using CheckIn.Infraestructure.EF.ReadModel.Reserva;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,16 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			var id_Test = Guid.NewGuid();
 			var hora_Test = DateTime.Now;
 
-			var obj = new TicketReadModel();
+			var obj = new ReservaReadModel();
 
 			Assert.Equal(Guid.Empty, obj.Id);
-			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.HoraReserva);
+			Assert.Equal(new DateTime(1, 1, 1, 0, 0, 0, 0), obj.Hora);
 
 			obj.Id = id_Test;
-			obj.HoraReserva = hora_Test;
+			obj.Hora = hora_Test;
 
 			Assert.Equal(id_Test, obj.Id);
-			Assert.Equal(hora_Test, obj.HoraReserva);
+			Assert.Equal(hora_Test, obj.Hora);
 		}
 	}
 }

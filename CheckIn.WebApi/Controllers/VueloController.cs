@@ -26,28 +26,22 @@ namespace CheckIn.WebApi.Controllers {
 			return Ok(result);
 		}
 
-		//[Route("{id:guid}")]
-		//[HttpGet]
-		//public async Task<IActionResult> GetById(Guid id) {
-		//	GetAdmByIdQuery query = new GetAdmByIdQuery(id);
-		//	AdministrativoDto result = await _mediator.Send(query);
-		//	if (result == null)
-		//		return NotFound();
+		[Route("{id:guid}")]
+		[HttpGet]
+		public async Task<IActionResult> GetById(Guid id) {
+			GetVueloByIdQuery query = new GetVueloByIdQuery(id);
+			VueloDto result = await _mediator.Send(query);
+			if (result == null)
+				return NotFound();
 
-		//	return Ok(result);
-		//}
+			return Ok(result);
+		}
 
 		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] CreateVueloComand command) {
+		public async Task<IActionResult> Create([FromBody] CreateVueloCommand command) {
 			Guid id = await _mediator.Send(command);
 			return Ok(id);
 		}
-
-		//[HttpPut]
-		//public async Task<IActionResult> Update([FromBody] CreateAdmCommand command) {
-		//	Guid id = await _mediator.Send(command);
-		//	return Ok(id);
-		//}
 
 		[HttpDelete]
 		public async Task<IActionResult> Delete(Guid id) {

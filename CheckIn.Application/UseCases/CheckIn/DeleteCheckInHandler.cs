@@ -1,5 +1,3 @@
-using CheckIn.Application.UseCases.Adm;
-using CheckIn.Domain.Factories.Adm;
 using CheckIn.Domain.Factories.CheckIn;
 using CheckIn.Domain.Repositories;
 using MediatR;

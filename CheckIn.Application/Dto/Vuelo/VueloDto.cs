@@ -10,8 +10,6 @@ namespace CheckIn.Application.Dto.Vuelo {
 		public int NroVuelo { get; set; }
 		public string Origen { get; set; }
 		public string Destino { get; set; }
-		public DateTime Partida { get; set; }
-		public DateTime Llegada { get; set; }
 
 		public VueloDto() {
 		}

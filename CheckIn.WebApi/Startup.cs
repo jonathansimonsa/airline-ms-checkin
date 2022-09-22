@@ -1,9 +1,11 @@
 using CheckIn.Application;
 using CheckIn.Infraestructure;
+using CheckIn.Infraestructure.EF.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,21 +18,26 @@ using System.Threading.Tasks;
 
 namespace CheckIn.WebApi {
 	public class Startup {
+
+		public IConfiguration Configuration { get; }
+
 		public Startup(IConfiguration configuration) {
 			Configuration = configuration;
 		}
 
-		public IConfiguration Configuration { get; }
-
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
-			services.AddAplication();
+
 			services.AddInfraestructure(Configuration);
 
 			services.AddControllers();
+
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "CheckIn.WebApi", Version = "v1" });
 			});
+
+			services.AddDbContext<ReadDbContext>(options =>
+			   options.UseSqlServer(Configuration.GetConnectionString("AeropuertoDbConnectionString")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,14 +49,17 @@ namespace CheckIn.WebApi {
 			}
 
 			app.UseHttpsRedirection();
-
 			app.UseRouting();
-
 			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints => {
 				endpoints.MapControllers();
 			});
+
+			using (var serviceScope = app.ApplicationServices.CreateScope()) {
+				var context = serviceScope.ServiceProvider.GetService<ReadDbContext>();
+				context.Database.Migrate();
+			}
 		}
 	}
 }

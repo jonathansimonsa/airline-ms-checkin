@@ -27,13 +27,12 @@ namespace CheckIn.Application.UseCases.CheckIn {
 					CheckInDto nuevo = new CheckInDto() {
 						Id = obj.Id,
 						NroCheckIn = obj.NroCheckIn,
-						HoraCheckIn = obj.HoraCheckIn,
+						Hora = obj.Hora,
 						EsAltaPrioridad = obj.EsAltaPrioridad,
 						LetraAsiento = obj.LetraAsiento,
 						NroAsiento = obj.NroAsiento,
-						TicketId = obj.TicketId,
+						ReservaId = obj.ReservaId,
 						VueloId = obj.VueloId,
-						AdministrativoId = obj.AdministrativoId
 					};
 
 					foreach (var item in obj.DetalleEquipaje) {

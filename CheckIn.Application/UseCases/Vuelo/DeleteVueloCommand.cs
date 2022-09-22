@@ -1,4 +1,3 @@
-using CheckIn.Application.Dto.Adm;
 using CheckIn.Application.Dto.CheckIn;
 using MediatR;
 using System;

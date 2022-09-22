@@ -10,8 +10,6 @@ namespace CheckIn.Infraestructure.EF.ReadModel.Vuelo {
 		public int NroVuelo { get; private set; }
 		public string Origen { get; private set; }
 		public string Destino { get; private set; }
-		public DateTime Partida { get; private set; }
-		public DateTime Llegada { get; private set; }
 
 	}
 }

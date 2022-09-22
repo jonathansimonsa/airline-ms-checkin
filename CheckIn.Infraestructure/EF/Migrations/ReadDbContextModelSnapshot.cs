@@ -19,53 +19,19 @@ namespace CheckIn.Infraestructure.EF.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Adm.AdministrativoReadModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Apellidos")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("apellidos");
-
-                    b.Property<string>("Cargo")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("cargo");
-
-                    b.Property<string>("Ci")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("ci");
-
-                    b.Property<string>("Nombres")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("nombres");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Administrativo");
-                });
-
             modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.CheckIn.CheckInReadModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AdministrativoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("EsAltaPrioridad")
                         .HasColumnType("int")
                         .HasColumnName("esAltaPrioridad");
 
-                    b.Property<DateTime>("HoraCheckIn")
+                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime")
-                        .HasColumnName("horaCheckIn");
+                        .HasColumnName("hora");
 
                     b.Property<string>("LetraAsiento")
                         .HasMaxLength(10)
@@ -81,7 +47,7 @@ namespace CheckIn.Infraestructure.EF.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("nroCheckIn");
 
-                    b.Property<Guid?>("TicketId")
+                    b.Property<Guid?>("ReservaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("VueloId")
@@ -89,9 +55,7 @@ namespace CheckIn.Infraestructure.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdministrativoId");
-
-                    b.HasIndex("TicketId");
+                    b.HasIndex("ReservaId");
 
                     b.HasIndex("VueloId");
 
@@ -128,19 +92,19 @@ namespace CheckIn.Infraestructure.EF.Migrations
                     b.ToTable("Equipaje");
                 });
 
-            modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Ticket.TicketReadModel", b =>
+            modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Reserva.ReservaReadModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("HoraReserva")
+                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime")
-                        .HasColumnName("horaReserva");
+                        .HasColumnName("hora");
 
-                    b.Property<int>("NroTicket")
+                    b.Property<int>("NroReserva")
                         .HasColumnType("int")
-                        .HasColumnName("nroTicket");
+                        .HasColumnName("nroReserva");
 
                     b.Property<Guid?>("VueloId")
                         .HasColumnType("uniqueidentifier");
@@ -149,7 +113,7 @@ namespace CheckIn.Infraestructure.EF.Migrations
 
                     b.HasIndex("VueloId");
 
-                    b.ToTable("Ticket");
+                    b.ToTable("Reserva");
                 });
 
             modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Vuelo.VueloReadModel", b =>
@@ -163,10 +127,6 @@ namespace CheckIn.Infraestructure.EF.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("destino");
 
-                    b.Property<DateTime>("Llegada")
-                        .HasColumnType("datetime")
-                        .HasColumnName("llegada");
-
                     b.Property<int>("NroVuelo")
                         .HasColumnType("int")
                         .HasColumnName("nroVuelo");
@@ -176,10 +136,6 @@ namespace CheckIn.Infraestructure.EF.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("origen");
 
-                    b.Property<DateTime>("Partida")
-                        .HasColumnType("datetime")
-                        .HasColumnName("partida");
-
                     b.HasKey("Id");
 
                     b.ToTable("Vuelo");
@@ -187,21 +143,15 @@ namespace CheckIn.Infraestructure.EF.Migrations
 
             modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.CheckIn.CheckInReadModel", b =>
                 {
-                    b.HasOne("CheckIn.Infraestructure.EF.ReadModel.Adm.AdministrativoReadModel", "Administrativo")
+                    b.HasOne("CheckIn.Infraestructure.EF.ReadModel.Reserva.ReservaReadModel", "Reserva")
                         .WithMany()
-                        .HasForeignKey("AdministrativoId");
-
-                    b.HasOne("CheckIn.Infraestructure.EF.ReadModel.Ticket.TicketReadModel", "Ticket")
-                        .WithMany()
-                        .HasForeignKey("TicketId");
+                        .HasForeignKey("ReservaId");
 
                     b.HasOne("CheckIn.Infraestructure.EF.ReadModel.Vuelo.VueloReadModel", "Vuelo")
                         .WithMany()
                         .HasForeignKey("VueloId");
 
-                    b.Navigation("Administrativo");
-
-                    b.Navigation("Ticket");
+                    b.Navigation("Reserva");
 
                     b.Navigation("Vuelo");
                 });
@@ -215,7 +165,7 @@ namespace CheckIn.Infraestructure.EF.Migrations
                     b.Navigation("CheckIn");
                 });
 
-            modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Ticket.TicketReadModel", b =>
+            modelBuilder.Entity("CheckIn.Infraestructure.EF.ReadModel.Reserva.ReservaReadModel", b =>
                 {
                     b.HasOne("CheckIn.Infraestructure.EF.ReadModel.Vuelo.VueloReadModel", "Vuelo")
                         .WithMany()
