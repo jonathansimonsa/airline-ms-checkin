@@ -18,7 +18,7 @@ namespace CheckIn.Test.Application.Dto {
 			var NroAsiento = 7;
 			var detalleTest = getDetalleCheckIn();
 			var reservaIdTest = Guid.NewGuid();
-			var asientoIdTest = Guid.NewGuid();
+			var vueloIdTest = Guid.NewGuid();
 
 			var objCheckIn = new CheckInDto();
 
@@ -29,6 +29,7 @@ namespace CheckIn.Test.Application.Dto {
 			Assert.Null(objCheckIn.LetraAsiento);
 			Assert.Equal(0, objCheckIn.NroAsiento);
 			Assert.Equal(Guid.Empty, objCheckIn.ReservaId);
+			Assert.Equal(Guid.Empty, objCheckIn.VueloId);
 			Assert.Empty(objCheckIn.DetalleEquipaje);
 
 			objCheckIn.Id = idTest;
@@ -39,6 +40,7 @@ namespace CheckIn.Test.Application.Dto {
 			objCheckIn.NroAsiento = NroAsiento;
 			objCheckIn.DetalleEquipaje = detalleTest;
 			objCheckIn.ReservaId = reservaIdTest;
+			objCheckIn.VueloId = vueloIdTest;
 
 			Assert.Equal(idTest, objCheckIn.Id);
 			Assert.Equal(nroCheckInTest, objCheckIn.NroCheckIn);
@@ -47,6 +49,7 @@ namespace CheckIn.Test.Application.Dto {
 			Assert.Equal(letraAsiento, objCheckIn.LetraAsiento);
 			Assert.Equal(NroAsiento, objCheckIn.NroAsiento);
 			Assert.Equal(reservaIdTest, objCheckIn.ReservaId);
+			Assert.Equal(vueloIdTest, objCheckIn.VueloId);
 			Assert.Equal(detalleTest.Count, objCheckIn.DetalleEquipaje.Count);
 		}
 

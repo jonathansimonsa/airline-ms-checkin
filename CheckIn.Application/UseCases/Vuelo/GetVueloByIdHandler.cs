@@ -13,11 +13,11 @@ using System.Threading;
 using CheckIn.Application.Dto.CheckIn;
 
 namespace Vuelo.Application.UseCases.Vuelo {
-	public class GetReservaByIdHandler : IRequestHandler<GetVueloByIdQuery, VueloDto> {
+	public class GetVueloByIdHandler : IRequestHandler<GetVueloByIdQuery, VueloDto> {
 		private readonly IVueloRepository _vueloRepository;
-		private readonly ILogger<GetReservaByIdHandler> _logger;
+		private readonly ILogger<GetVueloByIdHandler> _logger;
 
-		public GetReservaByIdHandler(IVueloRepository vueloRepository, ILogger<GetReservaByIdHandler> logger) {
+		public GetVueloByIdHandler(IVueloRepository vueloRepository, ILogger<GetVueloByIdHandler> logger) {
 			_vueloRepository = vueloRepository;
 			_logger = logger;
 		}
@@ -33,7 +33,6 @@ namespace Vuelo.Application.UseCases.Vuelo {
 					Origen = obj.Origen,
 					Destino = obj.Destino,
 				};
-
 			}
 			catch (Exception ex) {
 				_logger.LogError(ex, "Error al obtener Vuelo con id:", request.Id);

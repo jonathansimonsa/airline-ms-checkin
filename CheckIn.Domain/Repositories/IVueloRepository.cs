@@ -11,7 +11,7 @@ namespace CheckIn.Domain.Repositories {
 
 		Task Updateasync(Model.Vuelo.Vuelo obj);
 
-		Task Deleteasync(Model.Vuelo.Vuelo obj);
+		Task Deleteasync(Guid id);
 
 	}
 }

@@ -7,12 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Application {
+	[ExcludeFromCodeCoverage]
 	public static class Extensions {
 		public static IServiceCollection AddAplication(this IServiceCollection services) {
 

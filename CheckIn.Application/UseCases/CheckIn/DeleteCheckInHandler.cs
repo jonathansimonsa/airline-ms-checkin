@@ -2,7 +2,6 @@ using CheckIn.Domain.Factories.CheckIn;
 using CheckIn.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Pedidos.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,21 +28,17 @@ namespace CheckIn.Application.UseCases.CheckIn {
 		}
 
 		public async Task<Guid> Handle(DeleteCheckInCommand request, CancellationToken cancellationToken) {
+			var result = Guid.Empty;
 			try {
-				Domain.Model.CheckIn.CheckIn obj = await _checkInRepository.FindByIdAsync(request.Id);
-
-				if (obj == null) throw new Exception("Obj no encontrado.");
-
-				await _checkInRepository.Deleteasync(obj);
+				await _checkInRepository.Deleteasync(request.Id);
 				await _unitOfWork.Commit();
 
-				return obj.Id;
-
+				result = request.Id;
 			}
 			catch (Exception ex) {
-				_logger.LogError(ex, "Error al obtener el OBJ con id: " + request.Id);
+				_logger.LogError(ex, "Error DeleteCheckInHandler");
 			}
-			return Guid.Empty;
+			return result;
 		}
 	}
 }

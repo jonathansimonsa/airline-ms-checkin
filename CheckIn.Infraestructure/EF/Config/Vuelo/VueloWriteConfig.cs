@@ -8,8 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CheckIn.Infraestructure.EF.Config.Vuelo {
+	[ExcludeFromCodeCoverage]
 	public class VueloWriteConfig : IEntityTypeConfiguration<Domain.Model.Vuelo.Vuelo> {
 		public void Configure(EntityTypeBuilder<Domain.Model.Vuelo.Vuelo> builder) {
 			builder.ToTable("Vuelo");

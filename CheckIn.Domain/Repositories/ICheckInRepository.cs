@@ -11,7 +11,7 @@ namespace CheckIn.Domain.Repositories {
 
 		Task Updateasync(Model.CheckIn.CheckIn obj);
 
-		Task Deleteasync(Model.CheckIn.CheckIn obj);
+		Task Deleteasync(Guid id);
 
 		Task<List<Model.CheckIn.CheckIn>> GetByVueloAndPrioridad(Guid vueloId, int esAltaPrioridad);
 

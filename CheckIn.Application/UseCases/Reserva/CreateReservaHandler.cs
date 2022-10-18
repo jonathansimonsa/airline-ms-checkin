@@ -2,7 +2,6 @@ using CheckIn.Domain.Factories.Reserva;
 using CheckIn.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Pedidos.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -9,16 +9,17 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pedidos.Domain.Repositories;
 using ShareKernel.IntegrationEvents;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure {
+	[ExcludeFromCodeCoverage]
 	public static class Extensions {
 		public static IServiceCollection AddInfraestructure(this IServiceCollection services,
 			IConfiguration configuration) {

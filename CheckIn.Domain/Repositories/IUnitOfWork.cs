@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Pedidos.Domain.Repositories {
+namespace CheckIn.Domain.Repositories {
 	public interface IUnitOfWork {
 		Task Commit();
 	}

@@ -9,11 +9,13 @@ using Microsoft.EntityFrameworkCore;
 using ShareKernel.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Contexts {
+	[ExcludeFromCodeCoverage]
 	public class ReadDbContext : DbContext {
 		public virtual DbSet<VueloReadModel> Vuelo_Db { get; set; }
 		public virtual DbSet<ReservaReadModel> Reserva_Db { get; set; }

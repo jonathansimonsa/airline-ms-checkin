@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CheckIn.Infraestructure.EF.Migrations {
+	[ExcludeFromCodeCoverage]
 	public partial class InitialStructure : Migration {
 		protected override void Up(MigrationBuilder migrationBuilder) {
 			migrationBuilder.CreateTable(

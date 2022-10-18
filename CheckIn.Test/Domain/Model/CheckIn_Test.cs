@@ -27,15 +27,20 @@ namespace CheckIn.Test.Domain.Model {
 			obj.ResetEquipajes();
 			Assert.Empty(obj.DetalleEquipaje);
 
-			var valor = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue("Codigo");
+			var valor = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue("C");
 			string mytext = valor;
 
 			Assert.NotNull(mytext);
 
-			var new_Numero = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue(".");
+			var new_Numero = new CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue("Codigo");
 			new_Numero = "Nro";
+			Assert.NotEqual("Codigo", new_Numero.Value);
 
-			Assert.NotEqual(".", new_Numero.Value);
+
+			obj = new CheckIn.Domain.Model.CheckIn.CheckIn("C-", DateTime.Now, 1, "P", 1, Guid.NewGuid(), Guid.NewGuid());
+			obj.AgregarEquipaje("Bolso", new CheckIn.Domain.Model.CheckIn.ValueObjects.PesoValue(7), 1);
+
+			obj.ConsolidarCheckIn();
 
 		}
 	}
