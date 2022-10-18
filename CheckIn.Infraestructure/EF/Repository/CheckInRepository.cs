@@ -5,11 +5,13 @@ using CheckIn.Infraestructure.EF.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Repository {
+	[ExcludeFromCodeCoverage]
 	public class CheckInRepository : ICheckInRepository {
 		public readonly DbSet<Domain.Model.CheckIn.CheckIn> _checkIn;
 
@@ -34,7 +36,8 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			_checkIn.Update(obj);
 			return Task.CompletedTask;
 		}
-		public Task Deleteasync(Domain.Model.CheckIn.CheckIn obj) {
+		public Task Deleteasync(Guid id) {
+			var obj = FindByIdAsync(id).Result;
 			_checkIn.Remove(obj);
 			return Task.CompletedTask;
 		}

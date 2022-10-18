@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2022-10-17_11-24-08" tag="">
+  <assembly name="CheckIn.Application">
+    <class name="CheckIn.Application.Dto.CheckIn.CheckInDto" coveredlines="12" coverablelines="12" totallines="25" coveredbranches="0" totalbranches="0" coveredcodeelements="10" totalcodeelements="10" />
+    <class name="CheckIn.Application.Dto.CheckIn.EquipajeDto" coveredlines="5" coverablelines="5" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Application.Dto.Reserva.ReservaDto" coveredlines="5" coverablelines="5" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Application.Dto.Vuelo.VueloDto" coveredlines="6" coverablelines="6" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Application.Extensions" coveredlines="0" coverablelines="8" totallines="31" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Application.Services.CheckInService" coveredlines="1" coverablelines="1" totallines="11" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Application.UseCases.CheckIn.CreateCheckInCommand" coveredlines="9" coverablelines="9" totallines="24" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Application.UseCases.CheckIn.CreateCheckInHandler" coveredlines="22" coverablelines="44" totallines="83" coveredbranches="0" totalbranches="8" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.CheckIn.DeleteCheckInCommand" coveredlines="0" coverablelines="5" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="CheckIn.Application.UseCases.CheckIn.DeleteCheckInHandler" coveredlines="0" coverablelines="21" totallines="49" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.CheckIn.GetAllCheckInHandler" coveredlines="14" coverablelines="35" totallines="56" coveredbranches="0" totalbranches="4" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.CheckIn.GetAllCheckInQuery" coveredlines="1" coverablelines="1" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Application.UseCases.CheckIn.GetCheckInByIdHandler" coveredlines="23" coverablelines="32" totallines="54" coveredbranches="0" totalbranches="2" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.CheckIn.GetCheckInByIdQuery" coveredlines="5" coverablelines="5" totallines="20" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="CheckIn.Application.UseCases.Consumers.CheckInCreadoConsumer" coveredlines="0" coverablelines="5" totallines="28" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Consumers.IntegrationReservaConfirmadaRollbackConsumer" coveredlines="0" coverablelines="5" totallines="24" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Consumers.ReservaConfirmadaCreadoConsumer" coveredlines="0" coverablelines="33" totallines="70" coveredbranches="0" totalbranches="8" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Consumers.ReservaCreadoJsaConsumer" coveredlines="0" coverablelines="5" totallines="28" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.DomainEvents.PublishIntegrationEventWhenCheckInCreadoHandler" coveredlines="0" coverablelines="16" totallines="35" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Reserva.CreateReservaCommand" coveredlines="0" coverablelines="9" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="CheckIn.Application.UseCases.Reserva.CreateReservaHandler" coveredlines="0" coverablelines="26" totallines="52" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Reserva.DeleteReservaCommand" coveredlines="0" coverablelines="5" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="CheckIn.Application.UseCases.Reserva.DeleteReservaHandler" coveredlines="0" coverablelines="21" totallines="50" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Reserva.GetAllReservaHandler" coveredlines="14" coverablelines="23" totallines="42" coveredbranches="0" totalbranches="2" coveredcodeelements="2" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Reserva.GetAllReservaQuery" coveredlines="1" coverablelines="1" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Application.UseCases.Reserva.GetReservaByIdHandler" coveredlines="0" coverablelines="20" totallines="43" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Reserva.GetReservaByIdQuery" coveredlines="0" coverablelines="5" totallines="20" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="CheckIn.Application.UseCases.Vuelo.CreateVueloCommand" coveredlines="0" coverablelines="9" totallines="21" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="CheckIn.Application.UseCases.Vuelo.CreateVueloHandler" coveredlines="0" coverablelines="26" totallines="52" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Vuelo.DeleteVueloCommand" coveredlines="0" coverablelines="5" totallines="19" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="CheckIn.Application.UseCases.Vuelo.DeleteVueloHandler" coveredlines="0" coverablelines="21" totallines="49" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Vuelo.GetAllVueloHandler" coveredlines="0" coverablelines="23" totallines="42" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Application.UseCases.Vuelo.GetAllVueloQuery" coveredlines="0" coverablelines="1" totallines="14" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Application.UseCases.Vuelo.GetVueloByIdQuery" coveredlines="0" coverablelines="5" totallines="20" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Vuelo.Application.UseCases.Vuelo.GetReservaByIdHandler" coveredlines="0" coverablelines="20" totallines="44" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+  </assembly>
+  <assembly name="CheckIn.Domain">
+    <class name="CheckIn.Domain.Event.CheckInCreado" coveredlines="16" coverablelines="16" totallines="28" coveredbranches="0" totalbranches="0" coveredcodeelements="8" totalcodeelements="8" />
+    <class name="CheckIn.Domain.Factories.CheckIn.CheckInFactory" coveredlines="20" coverablelines="20" totallines="33" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Domain.Factories.Reserva.ReservaFactory" coveredlines="3" coverablelines="3" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Domain.Factories.Vuelo.VueloFactory" coveredlines="3" coverablelines="3" totallines="13" coveredbranches="0" totalbranches="0" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="CheckIn.Domain.Model.CheckIn.CheckIn" coveredlines="36" coverablelines="36" totallines="62" coveredbranches="0" totalbranches="0" coveredcodeelements="13" totalcodeelements="13" />
+    <class name="CheckIn.Domain.Model.CheckIn.Equipaje" coveredlines="10" coverablelines="10" totallines="27" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Domain.Model.CheckIn.ValueObjects.NumeroCheckInValue" coveredlines="11" coverablelines="11" totallines="25" coveredbranches="0" totalbranches="0" coveredcodeelements="4" totalcodeelements="4" />
+    <class name="CheckIn.Domain.Model.CheckIn.ValueObjects.PesoValue" coveredlines="12" coverablelines="12" totallines="28" coveredbranches="2" totalbranches="2" coveredcodeelements="4" totalcodeelements="4" />
+    <class name="CheckIn.Domain.Model.Reserva.Reserva" coveredlines="10" coverablelines="10" totallines="23" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Domain.Model.Vuelo.Vuelo" coveredlines="10" coverablelines="10" totallines="23" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+  </assembly>
+  <assembly name="CheckIn.Infraestructure">
+    <class name="CheckIn.Infraestructure.EF.Config.CheckIn.CheckInReadConfig" coveredlines="0" coverablelines="21" totallines="41" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.CheckIn.CheckInWriteConfig" coveredlines="0" coverablelines="28" totallines="51" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.CheckIn.EquipajeReadConfig" coveredlines="0" coverablelines="14" totallines="30" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.CheckIn.EquipajeWriteConfig" coveredlines="0" coverablelines="20" totallines="40" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.Reserva.ReservaReadConfig" coveredlines="0" coverablelines="10" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.Reserva.ReservaWriteConfig" coveredlines="0" coverablelines="11" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.Vuelo.VueloReadConfig" coveredlines="0" coverablelines="13" totallines="30" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Config.Vuelo.VueloWriteConfig" coveredlines="0" coverablelines="18" totallines="38" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.Contexts.ReadDbContext" coveredlines="0" coverablelines="19" totallines="46" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="CheckIn.Infraestructure.EF.Contexts.WriteDbContext" coveredlines="0" coverablelines="14" totallines="39" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="CheckIn.Infraestructure.EF.Migrations.InitialStructure" coveredlines="0" coverablelines="259" totallines="305" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="CheckIn.Infraestructure.EF.Migrations.ReadDbContextModelSnapshot" coveredlines="0" coverablelines="158" totallines="184" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="CheckIn.Infraestructure.EF.ReadModel.CheckIn.CheckInReadModel" coveredlines="11" coverablelines="12" totallines="26" coveredbranches="0" totalbranches="0" coveredcodeelements="9" totalcodeelements="10" />
+    <class name="CheckIn.Infraestructure.EF.ReadModel.CheckIn.EquipajeReadModel" coveredlines="5" coverablelines="5" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="CheckIn.Infraestructure.EF.ReadModel.Reserva.ReservaReadModel" coveredlines="2" coverablelines="4" totallines="16" coveredbranches="0" totalbranches="0" coveredcodeelements="2" totalcodeelements="4" />
+    <class name="CheckIn.Infraestructure.EF.ReadModel.Vuelo.VueloReadModel" coveredlines="0" coverablelines="4" totallines="15" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="CheckIn.Infraestructure.EF.Repository.CheckInRepository" coveredlines="0" coverablelines="27" totallines="50" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="8" />
+    <class name="CheckIn.Infraestructure.EF.Repository.ReservaRepository" coveredlines="0" coverablelines="20" totallines="42" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="CheckIn.Infraestructure.EF.Repository.VueloRepository" coveredlines="0" coverablelines="20" totallines="42" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="CheckIn.Infraestructure.EF.UnitOfWork" coveredlines="0" coverablelines="19" totallines="43" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="CheckIn.Infraestructure.Extensions" coveredlines="0" coverablelines="46" totallines="80" coveredbranches="0" totalbranches="2" coveredcodeelements="0" totalcodeelements="2" />
+  </assembly>
+  <assembly name="ShareKernel">
+    <class name="ShareKernel.Core.BussinessRuleValidationException" coveredlines="13" coverablelines="13" totallines="31" coveredbranches="1" totalbranches="2" coveredcodeelements="5" totalcodeelements="5" />
+    <class name="ShareKernel.Core.ConfirmedDoaminEvent`1" coveredlines="0" coverablelines="4" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="ShareKernel.Core.DomainEvent" coveredlines="6" coverablelines="6" totallines="14" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="ShareKernel.Core.Entity`1" coveredlines="11" coverablelines="17" totallines="33" coveredbranches="0" totalbranches="4" coveredcodeelements="5" totalcodeelements="6" />
+    <class name="ShareKernel.Core.IntegrationEvent" coveredlines="5" coverablelines="6" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="2" totalcodeelements="3" />
+    <class name="ShareKernel.Core.ValueObject" coveredlines="4" coverablelines="6" totallines="15" coveredbranches="2" totalbranches="4" coveredcodeelements="1" totalcodeelements="1" />
+    <class name="ShareKernel.IntegrationEvents.CheckInCreado" coveredlines="8" coverablelines="8" totallines="18" coveredbranches="0" totalbranches="0" coveredcodeelements="8" totalcodeelements="8" />
+    <class name="ShareKernel.IntegrationEvents.IntegrationReservaConfirmadaRollback" coveredlines="6" coverablelines="6" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="ShareKernel.IntegrationEvents.ReservaCreado" coveredlines="6" coverablelines="6" totallines="17" coveredbranches="0" totalbranches="0" coveredcodeelements="6" totalcodeelements="6" />
+    <class name="ShareKernel.Rules.DoubleNotNullOrNegaviteRule" coveredlines="9" coverablelines="9" totallines="25" coveredbranches="2" totalbranches="2" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="ShareKernel.Rules.NotNullRule" coveredlines="7" coverablelines="7" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="ShareKernel.Rules.StringNotNullOrEmptyRule" coveredlines="7" coverablelines="7" totallines="22" coveredbranches="0" totalbranches="0" coveredcodeelements="3" totalcodeelements="3" />
+    <class name="ShareKernel.ValueObjects.PersonNameValue" coveredlines="13" coverablelines="13" totallines="29" coveredbranches="2" totalbranches="2" coveredcodeelements="4" totalcodeelements="4" />
+  </assembly>
+</coverage>

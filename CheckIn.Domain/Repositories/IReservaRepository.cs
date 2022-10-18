@@ -11,7 +11,7 @@ namespace CheckIn.Domain.Repositories {
 
 		Task Updateasync(Model.Reserva.Reserva obj);
 
-		Task Deleteasync(Model.Reserva.Reserva obj);
+		Task Deleteasync(Guid id);
 
 	}
 }

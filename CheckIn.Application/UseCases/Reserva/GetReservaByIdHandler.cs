@@ -32,7 +32,6 @@ namespace CheckIn.Application.UseCases.Reserva {
 					Hora = obj.Hora,
 					VueloId = obj.VueloId,
 				};
-
 			}
 			catch (Exception ex) {
 				_logger.LogError(ex, "Error al obtener Reserva con id:", request.Id);

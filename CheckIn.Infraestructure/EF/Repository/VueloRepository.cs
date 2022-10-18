@@ -5,11 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using ShareKernel.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Repository {
+	[ExcludeFromCodeCoverage]
 	public class VueloRepository : IVueloRepository {
 		public readonly DbSet<Domain.Model.Vuelo.Vuelo> _vuelo;
 
@@ -26,7 +28,8 @@ namespace CheckIn.Infraestructure.EF.Repository {
 			return Task.CompletedTask;
 		}
 
-		public Task Deleteasync(Domain.Model.Vuelo.Vuelo obj) {
+		public Task Deleteasync(Guid id) {
+			var obj = FindByIdAsync(id).Result;
 			_vuelo.Remove(obj);
 			return Task.CompletedTask;
 		}

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace CheckIn.Infraestructure.EF.ReadModel.Vuelo {
 	public class VueloReadModel {
 		public Guid Id { get; set; }
-		public int NroVuelo { get; private set; }
-		public string Origen { get; private set; }
-		public string Destino { get; private set; }
+		public int NroVuelo { get; set; }
+		public string Origen { get; set; }
+		public string Destino { get; set; }
 
 	}
 }

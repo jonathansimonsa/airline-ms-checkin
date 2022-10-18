@@ -8,11 +8,13 @@ using MediatR;
 using ShareKernel.IntegrationEvents;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Consumers {
+	[ExcludeFromCodeCoverage]
 	public class ReservaCreadoJsaConsumer : IConsumer<ReservaDto> {
 
 		public const string ExchangeName = "reservaconfirmada-creado-exchange";

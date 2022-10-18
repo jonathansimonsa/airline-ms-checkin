@@ -11,7 +11,6 @@ namespace CheckIn.Domain.Model.CheckIn.ValueObjects {
 			Value = value;
 		}
 
-
 		public static implicit operator string(NumeroCheckInValue value) {
 			return value.Value;
 		}

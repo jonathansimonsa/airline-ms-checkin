@@ -5,14 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace CheckIn.Domain.Model.CheckIn {
 	public class CheckIn : AggregateRoot<Guid> {
 		public NumeroCheckInValue NroCheckIn { get; private set; }
 		public DateTime Hora { get; private set; }
 		public int EsAltaPrioridad { get; private set; }
-		public string LetraAsiento { get; set; }
-		public int NroAsiento { get; set; }
+		public string LetraAsiento { get; private set; }
+		public int NroAsiento { get; private set; }
 		public Guid ReservaId { get; private set; }
 		public Guid VueloId { get; private set; }
 
@@ -52,7 +53,8 @@ namespace CheckIn.Domain.Model.CheckIn {
 		}
 
 		public void ConsolidarCheckIn() {
-			var evento = new CheckInCreado(NroCheckIn, Hora, EsAltaPrioridad, LetraAsiento, NroAsiento, ReservaId, VueloId);
+			string nro = NroCheckIn;
+			var evento = new CheckInCreado(nro, Hora, EsAltaPrioridad, LetraAsiento, NroAsiento, ReservaId, VueloId);
 			AddDomainEvent(evento);
 		}
 

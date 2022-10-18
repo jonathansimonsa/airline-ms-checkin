@@ -21,13 +21,16 @@ namespace ShareKernel.Core {
 			_domainEvents.Clear();
 		}
 
-		protected void CheckRule(IBussinessRule rule) {
+		public string CheckRule(IBussinessRule rule) {
 			if (rule is null) {
-				throw new ArgumentException("Rule cannot be null");
+				//throw new ArgumentException("Rule cannot be null");
+				return "Rule cannot be null";
 			}
 			if (!rule.IsValid()) {
-				throw new BussinessRuleValidationException(rule);
+				//throw new BussinessRuleValidationException(rule);
+				return "Is not Valid";
 			}
+			return null;
 		}
 	}
 }
