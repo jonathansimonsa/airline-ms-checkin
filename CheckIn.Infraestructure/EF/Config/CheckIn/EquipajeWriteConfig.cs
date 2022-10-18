@@ -5,11 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF.Config.CheckIn {
+	[ExcludeFromCodeCoverage]
 	public class EquipajeWriteConfig : IEntityTypeConfiguration<Equipaje> {
 		public void Configure(EntityTypeBuilder<Equipaje> builder) {
 			builder.ToTable("Equipaje");

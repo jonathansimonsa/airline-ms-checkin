@@ -1,5 +1,6 @@
 using CheckIn.Infraestructure.EF.ReadModel.CheckIn;
 using CheckIn.Infraestructure.EF.ReadModel.Reserva;
+using CheckIn.Infraestructure.EF.ReadModel.Vuelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			var nroAsientoTest = 7;
 			var detalleTest = getDetalleCheckIn();
 			var reservaIdTest = new ReservaReadModel();
+			var vueloIdTest = new VueloReadModel();
 
 			var obj = new CheckInReadModel();
 
@@ -41,6 +43,7 @@ namespace CheckIn.Test.Infraestructure.ReadModel {
 			obj.NroAsiento = nroAsientoTest;
 			obj.DetalleEquipaje = detalleTest;
 			obj.Reserva = reservaIdTest;
+			obj.Vuelo = vueloIdTest;
 
 			Assert.Equal(idTest, obj.Id);
 			Assert.Equal(nroCheckInTest, obj.NroCheckIn);

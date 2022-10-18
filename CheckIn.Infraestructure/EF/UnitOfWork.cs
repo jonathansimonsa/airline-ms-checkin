@@ -1,14 +1,16 @@
+using CheckIn.Domain.Repositories;
 using CheckIn.Infraestructure.EF.Contexts;
 using MediatR;
-using Pedidos.Domain.Repositories;
 using ShareKernel.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Infraestructure.EF {
+	[ExcludeFromCodeCoverage]
 	public class UnitOfWork : IUnitOfWork {
 		private readonly WriteDbContext _context;
 		private readonly IMediator _mediator;

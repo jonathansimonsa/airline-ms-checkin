@@ -4,7 +4,6 @@ using CheckIn.Domain.Model.CheckIn.ValueObjects;
 using CheckIn.Domain.Repositories;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using Pedidos.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

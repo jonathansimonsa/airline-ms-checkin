@@ -3,11 +3,13 @@ using MediatR;
 using ShareKernel.IntegrationEvents;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Consumers {
+	[ExcludeFromCodeCoverage]
 	public class IntegrationReservaConfirmadaRollbackConsumer : IConsumer<IntegrationReservaConfirmadaRollback> {
 
 		public const string ExchangeName = "IntegrationReservaConfirmadaRollback-creado-exchange";
