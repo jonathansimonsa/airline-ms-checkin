@@ -18,13 +18,13 @@ namespace CheckIn.Application.UseCases.Reserva {
 		private readonly IReservaFactory _reservaFactory;
 		private readonly IUnitOfWork _unitOfWork;
 
-		public DeleteReservaHandler(IReservaRepository ticketRepository,
+		public DeleteReservaHandler(IReservaRepository reservaRepository,
 			ILogger<DeleteReservaHandler> logger,
-			IReservaFactory ticketFactory,
+			IReservaFactory reservaFactory,
 			IUnitOfWork unitOfWork) {
-			_reservaRepository = ticketRepository;
+			_reservaRepository = reservaRepository;
 			_logger = logger;
-			_reservaFactory = ticketFactory;
+			_reservaFactory = reservaFactory;
 			_unitOfWork = unitOfWork;
 		}
 

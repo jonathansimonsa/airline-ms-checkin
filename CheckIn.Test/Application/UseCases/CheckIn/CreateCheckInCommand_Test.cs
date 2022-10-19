@@ -20,7 +20,7 @@ namespace CheckIn.Test.Application.UseCases {
 
 			Assert.Equal(altaPrioridad, command.EsAltaPrioridad);
 			Assert.Equal(reservaId, command.ReservaId);
-			Assert.Equal(detalle.Count(), command.Detalle.Count());
+			Assert.Equal(detalle.Count(), command.DetalleEquipaje.Count());
 		}
 
 		[Fact]
@@ -29,7 +29,7 @@ namespace CheckIn.Test.Application.UseCases {
 
 			Assert.Equal(0, command.EsAltaPrioridad);
 			Assert.Equal(Guid.Empty, command.ReservaId);
-			Assert.Null(command.Detalle);
+			Assert.Null(command.DetalleEquipaje);
 		}
 	}
 }
