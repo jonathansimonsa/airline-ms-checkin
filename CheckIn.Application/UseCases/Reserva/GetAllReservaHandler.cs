@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace CheckIn.Application.UseCases.Reserva {
 	public class GetAllReservaHandler : IRequestHandler<GetAllReservaQuery, List<ReservaDto>> {
-		private readonly IReservaRepository _ticketRepository;
+		private readonly IReservaRepository _reservaRepository;
 		private readonly ILogger<GetAllReservaHandler> _logger;
 
-		public GetAllReservaHandler(IReservaRepository ticketRepository, ILogger<GetAllReservaHandler> logger) {
-			_ticketRepository = ticketRepository;
+		public GetAllReservaHandler(IReservaRepository reservaRepository, ILogger<GetAllReservaHandler> logger) {
+			_reservaRepository = reservaRepository;
 			_logger = logger;
 		}
 
 		public async Task<List<ReservaDto>> Handle(GetAllReservaQuery request, CancellationToken cancellationToken) {
 			List<ReservaDto> result = new List<ReservaDto>();
 			try {
-				List<Domain.Model.Reserva.Reserva> lista = await _ticketRepository.GetAll();
+				List<Domain.Model.Reserva.Reserva> lista = await _reservaRepository.GetAll();
 				foreach (var obj in lista) {
 					ReservaDto nuevo = new ReservaDto() {
 						Id = obj.Id,
