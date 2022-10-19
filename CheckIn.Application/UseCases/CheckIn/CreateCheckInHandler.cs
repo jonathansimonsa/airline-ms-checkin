@@ -63,7 +63,7 @@ namespace CheckIn.Application.UseCases.CheckIn {
 					request.ReservaId,
 					vueloId);
 
-				foreach (var item in request.Detalle) {
+				foreach (var item in request.DetalleEquipaje) {
 					objCheckIn.AgregarEquipaje(item.Descripcion, new PesoValue(item.Peso), item.EsFragil);
 				}
 				objCheckIn.ConsolidarCheckIn();
