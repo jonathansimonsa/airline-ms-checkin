@@ -6,3 +6,5 @@ Vent de Tickets			https://gitlab.com/jcspz0/ms-reserva		Juan Carlos Suarez
 Reservas a traves de mensajería 
 (ms-reserva, ms-pago)		https://gitlab.com/jcspz0/ms-pago	
 Check In			https://github.com/jonathansimonsa/airline-ms-checkin.git	Jonathan Simons
+
+FrontEnd proyecto		https://github.com/gabriel-chavez/AerolineNurFront
