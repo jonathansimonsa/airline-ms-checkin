@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "9d0367e0-1b1d-42f7-b53f-4d05b333c7a3",
+		"name": "DIPLO CHECK IN TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1812197"
+	},
+	"item": [
+		{
+			"name": "GetReservasSinCheckIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    var data = JSON.parse(responseBody);\r",
+							"    postman.setEnvironmentVariable(\"reservaId\", data[0].id);\r",
+							"    postman.setEnvironmentVariable(\"esAltaPrioridad\", _.random(0, 1));\r",
+							"    pm.environment.unset(\"checkInId\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.152.30.178:8184/api/mscheckin/GetReservasSinCheckIn",
+					"protocol": "http",
+					"host": [
+						"34",
+						"152",
+						"30",
+						"178"
+					],
+					"port": "8184",
+					"path": [
+						"api",
+						"mscheckin",
+						"GetReservasSinCheckIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllCheckIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.152.30.178:8184/api/mscheckin/checkin",
+					"protocol": "http",
+					"host": [
+						"34",
+						"152",
+						"30",
+						"178"
+					],
+					"port": "8184",
+					"path": [
+						"api",
+						"mscheckin",
+						"checkin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCheckIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.environment.unset(\"reservaId\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).not.empty;\r",
+							"});\r",
+							"\r",
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"checkInId\", data);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"esAltaPrioridad\": 1,\r\n  \"reservaId\": \"{{reservaId}}\",\r\n  \"detalleEquipaje\": [\r\n    {\r\n      \"descripcion\": \"Maleta\",\r\n      \"peso\": 37,\r\n      \"esFragil\": 0\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.152.30.178:8184/api/mscheckin/checkin",
+					"protocol": "http",
+					"host": [
+						"34",
+						"152",
+						"30",
+						"178"
+					],
+					"port": "8184",
+					"path": [
+						"api",
+						"mscheckin",
+						"checkin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCheckInById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://34.152.30.178:8184/api/mscheckin/checkin/{{checkInId}}",
+					"protocol": "http",
+					"host": [
+						"34",
+						"152",
+						"30",
+						"178"
+					],
+					"port": "8184",
+					"path": [
+						"api",
+						"mscheckin",
+						"checkin",
+						"{{checkInId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
