@@ -18,9 +18,24 @@
 							"    pm.response.to.have.status(200);\r",
 							"\r",
 							"    var data = JSON.parse(responseBody);\r",
-							"    postman.setEnvironmentVariable(\"reservaId\", data[0].id);\r",
-							"    postman.setEnvironmentVariable(\"esAltaPrioridad\", _.random(0, 1));\r",
-							"    pm.environment.unset(\"checkInId\");\r",
+							"    if (data.length > 0) {\r",
+							"        pm.environment.unset(\"checkInId\");\r",
+							"        var i = _.random(0, data.length - 1);\r",
+							"        postman.setEnvironmentVariable(\"reservaId\", data[i].id);\r",
+							"        postman.setEnvironmentVariable(\"esAltaPrioridad\", _.random(0, 1));\r",
+							"        var cantEquipaje = _.random(0, 5);\r",
+							"        var cont = 0;\r",
+							"        var detalleEquipaje = [];\r",
+							"        while (cont < cantEquipaje) {\r",
+							"            detalleEquipaje.push({\r",
+							"                \"descripcion\": \"Maleta\",\r",
+							"                \"peso\": _.random(1, 45),\r",
+							"                \"esFragil\": _.random(0, 1)\r",
+							"            });\r",
+							"            cont++;\r",
+							"        }\r",
+							"        postman.setEnvironmentVariable(\"detalleEquipaje\", JSON.stringify(detalleEquipaje));\r",
+							"    }\r",
 							"\r",
 							"});\r",
 							"\r",
@@ -99,6 +114,9 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    var data = JSON.parse(responseBody);\r",
+							"    postman.setEnvironmentVariable(\"checkInId\", data);\r",
 							"    pm.environment.unset(\"reservaId\");\r",
 							"});\r",
 							"\r",
@@ -106,8 +124,6 @@
 							"    pm.expect(pm.response.text()).not.empty;\r",
 							"});\r",
 							"\r",
-							"var data = JSON.parse(responseBody);\r",
-							"postman.setEnvironmentVariable(\"checkInId\", data);\r",
 							""
 						],
 						"type": "text/javascript"
@@ -128,7 +144,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"esAltaPrioridad\": 1,\r\n  \"reservaId\": \"{{reservaId}}\",\r\n  \"detalleEquipaje\": [\r\n    {\r\n      \"descripcion\": \"Maleta\",\r\n      \"peso\": 37,\r\n      \"esFragil\": 0\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"esAltaPrioridad\": 1,\r\n  \"reservaId\": \"{{reservaId}}\",\r\n  \"detalleEquipaje\": {{detalleEquipaje}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
